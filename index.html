@@ -83,24 +83,50 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            font-weight: 900;
+            font-size: 2.8rem;
+            font-weight: 700;
             background: var(--gradient-luxury);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             position: relative;
-            text-shadow: var(--glow-text);
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1) rotate(10deg);
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+            }
+            50% { 
+                transform: translateY(-8px) rotate(5deg);
+                filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.4));
+            }
         }
 
         .logo::after {
             content: 'by Erdit Brown';
             position: absolute;
             bottom: -10px;
-            left: 0;
+            left: 70px;
             font-size: 0.35em;
             color: var(--text-muted);
             font-family: 'Inter', sans-serif;
@@ -185,8 +211,8 @@
             height: 100%;
             object-fit: cover;
             z-index: 1;
-            opacity: 0.9;
-            filter: brightness(0.8) contrast(1.3) saturate(1.2);
+            opacity: 1;
+            filter: brightness(0.7) contrast(1.2) saturate(1.1);
         }
 
         .hero-overlay {
@@ -1651,11 +1677,11 @@
             muted 
             loop 
             playsinline
-            poster="https://i.imgur.com/04x9Rfw.jpg"
+            poster=""
         >
-            <source src="https://i.imgur.com/04x9Rfw.mp4" type="video/mp4">
             <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
             <source src="https://videos.pexels.com/video-files/3128671/3128671-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/856383/856383-hd_1920_1080_24fps.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         
@@ -2279,26 +2305,37 @@
                     src: this.src
                 });
                 
-                // Fallback to dark background with better visibility
+                // Fallback to dark animated background (NOT static image)
                 const hero = document.querySelector('.hero');
-                hero.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%)';
+                hero.style.background = 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%)';
+                hero.style.animation = 'backgroundPulse 8s ease-in-out infinite';
                 this.style.display = 'none';
                 
                 // Show fallback message
-                console.log('🔄 Switched to fallback background');
+                console.log('🔄 Switched to animated fallback background');
             });
 
-            // Force video to be more visible
+            // Force video to be more visible and remove any static images
             setTimeout(() => {
                 if (heroVideo.paused) {
                     console.log('⚠️ Video is still paused, trying to play...');
                     heroVideo.play().catch(e => console.log('Manual play failed:', e));
                 }
                 
-                // Make video much more visible
-                heroVideo.style.opacity = '0.95';
-                heroVideo.style.filter = 'brightness(0.9) contrast(1.4) saturate(1.3)';
-            }, 2000);
+                // Remove any static images that might interfere
+                const staticImages = document.querySelectorAll('.hero img:not(.logo-image)');
+                staticImages.forEach(img => {
+                    if (!img.classList.contains('logo-image')) {
+                        img.remove();
+                        console.log('🗑️ Removed static image:', img.src);
+                    }
+                });
+                
+                // Make video fully visible
+                heroVideo.style.opacity = '1';
+                heroVideo.style.filter = 'brightness(0.8) contrast(1.3) saturate(1.2)';
+                console.log('💡 Video made fully visible');
+            }, 1000);
 
             // Pause video when not visible (save bandwidth)
             const videoObserver = new IntersectionObserver((entries) => {
