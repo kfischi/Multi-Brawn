@@ -55,7 +55,7 @@
             padding: 0 20px;
         }
 
-        /* Premium Header */
+        /* Premium Header - Million Dollar Style */
         .header {
             position: fixed;
             top: 0;
@@ -83,7 +83,7 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 3rem; /* הגדלה להבלטה */
             font-weight: 700;
             background: var(--gradient-luxury);
             -webkit-background-clip: text;
@@ -94,16 +94,16 @@
             position: relative;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.2rem; /* הגדלה להבלטה */
         }
 
         .logo-image {
-            width: 70px;
-            height: 70px;
+            width: 70px; /* הגדלה להבלטה */
+            height: 70px; /* הגדלה להבלטה */
             border-radius: 15px;
             transition: all 0.6s ease;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
-            animation: logoFloat 6s ease-in-out infinite; /* אנימציית הריחוף הקיימת */
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); /* חיזוק ההבלטה */
+            animation: logoFloat 6s ease-in-out infinite;
         }
 
         @keyframes logoFloat {
@@ -121,7 +121,7 @@
             content: 'by Erdit Brown';
             position: absolute;
             bottom: -10px;
-            left: 80px;
+            left: 80px; /* התאמה למיקום לאחר הגדלת הלוגו */
             font-size: 0.35em;
             color: var(--text-muted);
             font-family: 'Inter', sans-serif;
@@ -187,14 +187,15 @@
             transform: scale(1.1);
         }
 
-        /* Hero Section with Video */
+        /* Hero Section - Million Dollar Video Background */
         .hero {
-            height: 100vh; /* עכשיו Hero מכסה את כל גובה המסך */
+            height: 100vh;
             display: flex;
-            align-items: center; /* מרכז אנכית */
-            justify-content: center; /* מרכז אופקית */
+            align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
+            padding: 0; /* ללא מרווחים כדי למקסם את שטח הוידאו */
             background: var(--deep-black);
             text-align: center;
         }
@@ -205,10 +206,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* יבטיח שהוידאו יכסה את כל השטח */
+            object-fit: cover;
             z-index: 1;
             opacity: 1;
-            filter: brightness(0.7) contrast(1.2) saturate(1.1); /* מעט יותר כהה כדי שהטקסט יבלוט */
+            filter: brightness(0.7) contrast(1.2) saturate(1.1);
         }
 
         .hero-overlay {
@@ -221,148 +222,36 @@
             z-index: 2;
         }
 
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            /* שימוש ב-SVG כרקע במקום ליצור אינסוף אלמנטים */
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="particle"><stop offset="0%" stop-color="rgba(255,215,0,0.8)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><circle cx="100" cy="100" r="2" fill="url(%23particle)"><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></circle><circle cx="300" cy="200" r="1" fill="rgba(0,212,255,0.6)"><animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/></circle><circle cx="700" cy="150" r="1.5" fill="rgba(138,43,226,0.7)"><animate attributeName="opacity" values="0;1;0" dur="5s" repeatCount="indefinite"/></circle></svg>');
+            opacity: 0.6;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
         .hero-content {
             position: relative;
             z-index: 3;
             text-align: center;
             max-width: 1100px;
             margin: 0 auto;
-            display: flex; /* שימוש בפלקסבוקס ליישור פנימי */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%; /* כדי לאפשר לתוכן להתיישר אנכית בתוך ה-hero */
-            padding: 20px; /* ריווח פנימי לתוכן */
+            /* הסרת כל התוכן מה-Hero Section כדי להבליט את הוידאו */
+            /* ה-div נשאר כדי לשמור על מבנה הגריד/פלקסבוקס של הסקשן אם יוחלט להוסיף תוכן בעתיד */
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(4rem, 10vw, 8rem); /* גודל גדול יותר לבלטות */
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: 5px; /* מרווח גדול יותר בין אותיות */
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 30%, #00D4FF 70%, #FFFFFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 50px rgba(255, 255, 255, 0.9); /* זוהר חזק יותר */
-            filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.6));
-            animation: titleGlow 8s ease-in-out infinite;
-            display: none; /* הסתרת הכותרת הראשית */
-        }
-
-        /* New Intro Section - holds all the removed content from Hero */
-        .intro-section {
-            background: var(--surface-dark);
-            padding: 10rem 0 6rem;
-            text-align: center;
-        }
-
-        .intro-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 900;
-            margin-bottom: 2.5rem;
-            line-height: 1.1;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-gold) 30%, var(--accent-blue) 70%, #FFFFFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
-            filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.5));
-            animation: titleGlow 8s ease-in-out infinite; /* אותה אנימציה יוקרתית */
-        }
-
-        .intro-section .subtitle {
-            font-size: clamp(1.5rem, 5vw, 2.2rem);
-            margin-bottom: 3rem;
-            font-weight: 600;
-            color: var(--text-white);
-            letter-spacing: 2px;
-            line-height: 1.3;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .intro-section .description {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            margin-bottom: 4rem;
-            color: var(--text-light);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            padding: 2.5rem;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: var(--shadow-dark);
-        }
-
-        /* Business Domains Preview (in Intro Section now) */
-        .domains-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 5rem 0;
-            max-width: 1300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .domain-card {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(40px);
-            padding: 2.5rem 2rem;
-            border-radius: 30px;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            text-align: center;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-dark);
-        }
-
-        .domain-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.3);
-            border-color: var(--primary-gold);
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        .domain-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-luxury);
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            box-shadow: var(--shadow-gold);
-        }
-
-        .domain-icon i {
-            font-size: 2rem;
-            color: var(--deep-black);
-            font-weight: 900;
-        }
-
-        .domain-card h4 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--text-white);
-            letter-spacing: 1px;
-        }
-
-        .domain-card p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-weight: 500;
-        }
+        /* Business Domains Preview - Million Dollar Style (from original Hero) */
+        /* העברתי את הסטיילים והתוכן של domains-preview לסקשן החדש business-domains */
 
         .cta-buttons {
             display: flex;
@@ -390,6 +279,21 @@
             text-transform: uppercase;
         }
 
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
         .btn-primary {
             background: var(--gradient-luxury);
             color: var(--deep-black);
@@ -415,11 +319,23 @@
             box-shadow: var(--shadow-gold);
         }
 
-        /* About Section */
+        /* About Section - Dark Luxury */
         .about-erdit {
             padding: 10rem 0;
             background: var(--surface-dark);
             position: relative;
+        }
+
+        .about-erdit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+            opacity: 0.3;
         }
 
         .about-content {
@@ -456,6 +372,25 @@
             filter: brightness(1.1) contrast(1.1);
         }
 
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(138, 43, 226, 0.3));
+            border-radius: 50px;
+            z-index: 1;
+            opacity: 0.5;
+            animation: imageGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes imageGlow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(2deg); }
+        }
+
         .about-text h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 7vw, 4.5rem);
@@ -486,12 +421,786 @@
             font-weight: 500;
         }
 
-        /* Responsive */
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .achievement {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .achievement:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary-gold);
+        }
+
+        .achievement h4 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            text-shadow: var(--glow-text);
+        }
+
+        .achievement p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        /* Business Domains Section */
+        .business-domains {
+            padding: 10rem 0;
+            background: var(--deep-black);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        .section-title p {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            color: var(--text-muted);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 4rem;
+        }
+
+        .business-card {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 4rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow-dark);
+            transition: all 0.5s ease;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(30px);
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--gradient-luxury);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .business-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 40px 100px rgba(255, 215, 0, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .business-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .business-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .business-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-luxury);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-gold);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .business-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: var(--gradient-luxury);
+            border-radius: 35px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: businessGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes businessGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        .business-icon i {
+            font-size: 3rem;
+            color: var(--deep-black);
+            font-weight: 900;
+        }
+
+        .business-image {
+            width: 250px;
+            height: 150px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .business-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+            letter-spacing: 1px;
+        }
+
+        .business-card .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .business-card p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .business-features {
+            list-style: none;
+            margin-bottom: 4rem;
+        }
+
+        .business-features li {
+            padding: 1.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-right: 4rem;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .business-features li:hover {
+            color: var(--primary-gold);
+            padding-right: 5rem;
+        }
+
+        .business-features li:last-child {
+            border-bottom: none;
+        }
+
+        .business-features li::before {
+            content: '✨';
+            position: absolute;
+            right: 0;
+            font-size: 1.5rem;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        .business-btn {
+            background: var(--gradient-luxury);
+            color: var(--deep-black);
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 100%;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .business-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 8rem 0;
+            background: var(--surface-dark);
+            color: var(--text-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+            opacity: 0.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary-gold);
+        }
+
+        .stat-item h3 {
+            font-size: clamp(3.5rem, 10vw, 5.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--primary-gold);
+            text-shadow: var(--glow-text);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-item p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 10rem 0;
+            background: var(--deep-black);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 6rem;
+        }
+
+        .testimonial-card {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-dark);
+            position: relative;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(30px);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            font-size: 6rem;
+            color: var(--primary-gold);
+            font-family: 'Playfair Display', serif;
+            opacity: 0.7;
+            text-shadow: var(--glow-text);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .testimonial-author {
+            font-weight: 800;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-role {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 10rem 0;
+            background: var(--surface-dark);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+        }
+
+        .contact-info {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 5rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow-dark);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(30px);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .contact-item:hover {
+            transform: translateX(15px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary-gold);
+        }
+
+        .contact-item i {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-luxury);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-black);
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            font-weight: 900;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .contact-form {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 5rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow-dark);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(30px);
+        }
+
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 3rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 25px;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            font-family: 'Heebo', Arial, sans-serif;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-white);
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-gold);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .form-group textarea {
+            height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient-luxury);
+            color: var(--deep-black);
+            padding: 2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 80px rgba(255, 215, 0, 0.6);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #25d366, #20b358);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            text-decoration: none;
+            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: whatsappFloat 8s ease-in-out infinite;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes whatsappFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-20px) rotate(5deg) scale(1.05); }
+            50% { transform: translateY(0) rotate(0deg) scale(1); }
+            75% { transform: translateY(-10px) rotate(-3deg) scale(1.02); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-black);
+            color: var(--text-white);
+            padding: 6rem 0;
+            text-align: center;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-gold);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+            transform: translateX(10px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            padding-top: 3rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        /* Footer Logo */
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+            transition: all 0.5s ease;
+        }
+
+        .footer-logo-image:hover {
+            transform: scale(1.15) rotate(15deg);
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
+        }
+
+        /* About Section Logo */
+        .about-brand {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .about-brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.4));
+            animation: aboutLogoSpin 12s linear infinite;
+        }
+
+        @keyframes aboutLogoSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.05); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .about-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        /* Page Loader with Logo */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 40px;
+            margin-bottom: 2rem;
+            animation: loaderSpin 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+        }
+
+        @keyframes loaderSpin {
+            0% {
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+            }
+            25% {
+                transform: rotate(90deg) scale(1.1);
+                filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.7));
+            }
+            50% {
+                transform: rotate(180deg) scale(1);
+                filter: drop-shadow(0 0 45px rgba(138, 43, 226, 0.6));
+            }
+            75% {
+                transform: rotate(270deg) scale(1.1);
+                filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.7));
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+            }
+        }
+
+        .loader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+                transform: scale(1);
+            }
+            100% {
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+                transform: scale(1.02);
+            }
+        }
+
+        .loader-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Responsive Styles */
         @media (max-width: 1024px) {
+            .domains-grid {
+                grid-template-columns: 1fr;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            
+            .business-card {
+                padding: 3rem;
+            }
+            
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 6rem;
                 text-align: center;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 6rem;
+            }
+            
+            .business-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .business-image {
+                width: 100%;
+                max-width: 400px;
+                height: 200px;
             }
         }
 
@@ -499,7 +1208,7 @@
             .mobile-menu-btn {
                 display: block !important;
             }
-
+            
             .nav-links {
                 position: absolute;
                 top: 100%;
@@ -515,24 +1224,72 @@
                 z-index: 1000;
                 border-top: 2px solid var(--primary-gold);
             }
-
+            
             .nav-links.active {
                 transform: translateY(0);
                 opacity: 1;
             }
-
+            
             .nav-links li {
                 margin: 1rem 0;
             }
 
-            .domains-preview {
+            .hero {
+                padding: 0; /* וודא שאין ריפוד ב-Hero במובייל */
+            }
+
+            /* .domains-preview moved to business-domains section */
+            
+            .domain-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .domain-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .domain-icon i {
+                font-size: 1.8rem;
+            }
+
+            .business-card {
+                padding: 3rem;
+            }
+
+            .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+                gap: 3rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 500px;
+                justify-content: center;
             }
 
             .hero-video {
+                display: block;
                 opacity: 1;
                 filter: brightness(0.8) contrast(1.2);
+            }
+            
+            /* Remove fallback background for hero if video doesn't play */
+            .hero {
+                background: var(--deep-black); /* רקע שחור עמוק במקום גרדיאנט אם הוידאו לא מוצג */
             }
         }
 
@@ -541,8 +1298,38 @@
                 padding: 0 15px;
             }
 
-            .domains-preview {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .domains-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .business-card {
+                padding: 2.5rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 3rem;
+            }
+
+            .whatsapp-float {
+                bottom: 25px;
+                left: 25px;
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-frame {
+                padding: 20px;
+                max-width: 400px;
             }
         }
 
@@ -564,6 +1351,12 @@
     </style>
 </head>
 <body>
+    <div class="page-loader" id="pageLoader">
+        <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Loading" class="loader-logo">
+        <div class="loader-text">MULTIBRAWN</div>
+        <div class="loader-subtitle">טוען את החוויה המושלמת...</div>
+    </div>
+
     <header class="header" id="header">
         <nav class="container">
             <div class="nav">
@@ -573,7 +1366,9 @@
                 </a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">בית</a></li>
-                    <li><a href="#intro">פתרונות</a></li> <li><a href="#about">אודות</a></li>
+                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#domains">תחומי עסק</a></li>
+                    <li><a href="#testimonials">המלצות</a></li>
                     <li><a href="#contact">צור קשר</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -584,94 +1379,38 @@
     </header>
 
     <section id="home" class="hero">
-        <video
+        <video 
             class="hero-video"
-            autoplay
-            muted
-            loop
+            autoplay 
+            muted 
+            loop 
             playsinline
         >
             <source src="https://i.imgur.com/04x9Rfw.mp4" type="video/mp4">
             <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
         </video>
-
+        
         <div class="hero-overlay"></div>
-
+        
+        <div class="hero-particles"></div>
+        
         <div class="container">
             <div class="hero-content">
                 </div>
         </div>
     </section>
 
-    <section id="intro" class="intro-section">
-        <div class="container">
-            <h2 class="fade-in-up">ברוכים הבאים לעולם שבו כל חלום הופך למציאות</h2>
-            <p class="subtitle fade-in-up">6 תחומים • פתרון אחד מושלם</p>
-            <p class="description fade-in-up">
-                מנופש יוקרתי ואירועים בלתי נשכחים, דרך הפקות מדיה מרהיבות וניהול קהילות,
-                נדל״ן וקרקעות, ועד לשיווק דיגיטלי מתקדם - כל מה שאתם צריכים במקום אחד.
-            </p>
-
-            <div class="domains-preview">
-                <div class="domain-card fade-in-up">
-                    <div class="domain-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h4>MultiStay</h4>
-                    <p>וילות וצימרים יוקרתיים</p>
-                </div>
-                <div class="domain-card fade-in-up">
-                    <div class="domain-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h4>MultiEvents</h4>
-                    <p>אירועים פרטיים וחתונות</p>
-                </div>
-                <div class="domain-card fade-in-up">
-                    <div class="domain-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h4>MultiMedia</h4>
-                    <p>הפקת סרטונים אומנותיים</p>
-                </div>
-                <div class="domain-card fade-in-up">
-                    <div class="domain-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4>MultiCommunity</h4>
-                    <p>ניהול קהילות דיגיטליות</p>
-                </div>
-                <div class="domain-card fade-in-up">
-                    <div class="domain-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h4>MultiEstate</h4>
-                    <p>נדל״ן וקרקעות</p>
-                </div>
-                <div class="domain-card fade-in-up">
-                    <div class="domain-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h4>MultiMarketing</h4>
-                    <p>שיווק דיגיטלי ואתרים</p>
-                </div>
-            </div>
-
-            <div class="cta-buttons">
-                <a href="#about" class="btn btn-primary fade-in-up">
-                    <i class="fas fa-arrow-down"></i>
-                    גלו את העולם שלנו
-                </a>
-                <a href="https://wa.me/972500000000" class="btn btn-secondary fade-in-up" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    יצירת קשר מיידית
-                </a>
-            </div>
-        </div>
-    </section>
-
     <section id="about" class="about-erdit">
         <div class="container">
+            <div class="about-brand">
+                <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Brand" class="about-brand-logo">
+                <h3>המותג שמחבר הכל</h3>
+                <p>
+                    מולטיבראון לא רק חברה - זה אקוסיסטם שלם שמביא פתרונות מושלמים בכל תחום. 
+                    כמו קובייה של רוביק, כל צד מייצג תחום אחר, אבל הכל עובד יחד בהרמוניה מושלמת.
+                </p>
+            </div>
+
             <div class="about-content">
                 <div class="about-image">
                     <div class="image-frame">
@@ -685,22 +1424,772 @@
                         <strong>"החלום שלי היה ליצור אקוסיסטם שלם שבו כל לקוח יקבל פתרון מושלם לכל צורך."</strong>
                     </p>
                     <p>
-                        עם למעלה מ-15 שנות ניסיון בתחום האירוח והשיווק הדיגיטלי, ערדית בראון בנתה את מולטיבראון
+                        עם למעלה מ-15 שנות ניסיון בתחום האירוח והשיווק הדיגיטלי, ערדית בראון בנתה את מולטיבראון 
                         כחזון מהפכני - חברה אחת שמציעה 6 תחומי שירות משלימים ברמה הגבוהה ביותר.
                     </p>
                     <p>
-                        מהתמחות ראשונית בנופש יוקרתי, דרך הרחבה לאירועים פרטיים והפקות מדיה, נדל״ן וקרקעות,
+                        מהתמחות ראשונית בנופש יוקרתי, דרך הרחבה לאירועים פרטיים והפקות מדיה, נדל״ן וקרקעות, 
                         ועד לחדשנות בניהול קהילות ושיווק דיגיטלי - ערדית הוכיחה שאפשר להיות מצוינים בהכל.
                     </p>
+                    <p>
+                        <strong>"אני מאמינה שכל לקוח ראוי לחוויה מושלמת, לא משנה איזה שירות הוא בוחר."</strong>
+                    </p>
+                    
+                    <div class="achievements">
+                        <div class="achievement">
+                            <h4>500+</h4>
+                            <p>פרויקטים מוצלחים</p>
+                        </div>
+                        <div class="achievement">
+                            <h4>15</h4>
+                            <p>שנות ניסיון</p>
+                        </div>
+                        <div class="achievement">
+                            <h4>98%</h4>
+                            <p>שביעות רצון לקוחות</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="padding: 10rem 0; background: var(--surface-dark); text-align: center;">
+    <section id="domains" class="business-domains">
         <div class="container">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin-bottom: 3rem; background: var(--gradient-luxury); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">בואו נתחיל לעבוד יחד</h2>
+            <div class="section-title">
+                <h2>תחומי העסק שלנו</h2>
+                <p>שישה תחומים מתקדמים, כל אחד מנוהל ברמה הגבוהה ביותר עם מומחיות ייעודית ושירות אישי</p>
+            </div>
 
-            <div style="display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; margin-top: 4rem;">
-                <a href="tel:0500000000" style="display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.8); padding: 2rem 3rem; border-radius: 25px; color: var(--text-white); text-decoration: none; border: 2px solid var(--primary-gold); transition: all 0.3s ease;">
-                    <i class="fas
+            <div class="domains-grid">
+                <div class="business-card">
+                    <div class="business-header">
+                        <div class="business-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=240&fit=crop&crop=center&auto=format&q=80" alt="MultiStay - וילות וצימרים יוקרתיים" class="business-image">
+                    </div>
+                    <h3>MultiStay</h3>
+                    <p class="subtitle">וילות וצימרים יוקרתיים להשכרה יומית</p>
+                    <p>
+                        נופש שמתחיל באיכות. ב'מולטי בראון' אנחנו מאמינים שנופש מושלם מתחיל בפרטים הקטנים - 
+                        ולכן אנו מתמקדים בהצעת נכסים נבחרים בלבד: וילות, צימרים ודירות נופש מעוצבים ברמה גבוהה.
+                    </p>
+                    <ul class="business-features">
+                        <li>וילות יוקרה עם בריכות פרטיות</li>
+                        <li>צימרים רומנטיים מעוצבים</li>
+                        <li>דירות נופש משפחתיות</li>
+                        <li>ליווי אישי בבחירת המקום</li>
+                        <li>שירות 24/7 ותמיכה מלאה</li>
+                        <li>הזמנה אונליין מהירה וקלה</li>
+                    </ul>
+                    <button class="business-btn" onclick="openDomain('multistay')">
+                        כנסו לאתר MultiStay →
+                    </button>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-header">
+                        <div class="business-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&h=240&fit=crop&crop=center&auto=format&q=80" alt="MultiEvents - אירועים פרטיים" class="business-image">
+                    </div>
+                    <h3>MultiEvents</h3>
+                    <p class="subtitle">שבתות חתן ואירועים פרטיים</p>
+                    <p>
+                        האירוע שלכם - בידיים טובות. שבת חתן, חתונה קטנה, בר מצווה או כל שמחה אינטימית - 
+                        אנחנו כאן כדי להפוך את היום שלכם לחוויה בלתי נשכחת עם תשומת לב מושלמת לכל פרט.
+                    </p>
+                    <ul class="business-features">
+                        <li>שבתות חתן מותאמות אישית</li>
+                        <li>חתונות קטנות ואירועים פרטיים</li>
+                        <li>בר/בת מצווה חגיגיים</li>
+                        <li>התאמה לציבור דתי וחרדי</li>
+                        <li>מטבח כשר למהדרין</li>
+                        <li>ליווי מלא מהתכנון ועד הביצוע</li>
+                    </ul>
+                    <button class="business-btn" onclick="openDomain('multievents')">
+                        כנסו לאתר MultiEvents →
+                    </button>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-header">
+                        <div class="business-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=240&fit=crop&crop=center&auto=format&q=80" alt="MultiMedia - הפקת סרטונים" class="business-image">
+                    </div>
+                    <h3>MultiMedia</h3>
+                    <p class="subtitle">הפקת סרטונים אומנותיים לאירוח</p>
+                    <p>
+                        החיים הם סרט - אנחנו מפיקים אותו. אם אתם בעלי נכס או מארחים שמעוניינים להציג את המקום 
+                        שלכם בצורה ייחודית, שירות הפקת הסרטונים האומנותיים שלנו נועד בדיוק עבורכם.
+                    </p>
+                    <ul class="business-features">
+                        <li>סרטונים שיווקיים ברמה אומנותית</li>
+                        <li>תסריט חכם וצילום מקצועי</li>
+                        <li>עריכה מתקדמת ואפקטים ויזואליים</li>
+                        <li>הפקה מלאה מהרעיון ועד התוצר</li>
+                        <li>התאמה לפלטפורמות דיגיטליות שונות</li>
+                        <li>ליווי בקמפיינים ושיווק התוכן</li>
+                    </ul>
+                    <button class="business-btn" onclick="openDomain('multimedia')">
+                        כנסו לאתר MultiMedia →
+                    </button>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-header">
+                        <div class="business-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=240&fit=crop&crop=center&auto=format&q=80" alt="MultiCommunity - קהילות דיגיטליות" class="business-image">
+                    </div>
+                    <h3>MultiCommunity</h3>
+                    <p class="subtitle">קשרים חברתיים וקהילתיים</p>
+                    <p>
+                        חיבורים שעושים את ההבדל. הכוח של קהילה הוא עצום - וב'מולטי בראון' אנחנו יודעות איך לרתום 
+                        אותו לשירות הלקוחות שלנו באמצעות ניהול קהילות דיגיטליות מתקדם ויעיל.
+                    </p>
+                    <ul class="business-features">
+                        <li>ניהול קבוצות פייסבוק ייעודיות</li>
+                        <li>דפי אינסטגרם פעילים ומעורבים</li>
+                        <li>ערוצי וואטסאפ סגורים ומקצועיים</li>
+                        <li>חיבור בין לקוחות לספקים איכותיים</li>
+                        <li>מיקוד בקהלי יעד ספציפיים</li>
+                        <li>גישה אותנטית ולא פרסומית</li>
+                    </ul>
+                    <button class="business-btn" onclick="openDomain('multicommunity')">
+                        כנסו לאתר MultiCommunity →
+                    </button>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-header">
+                        <div class="business-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=240&fit=crop&crop=center&auto=format&q=80" alt="MultiEstate - נדל״ן וקרקעות" class="business-image">
+                    </div>
+                    <h3>MultiEstate</h3>
+                    <p class="subtitle">נדל״ן וקרקעות - השקעות וייעוץ</p>
+                    <p>
+                        השקעות חכמות בנדל״ן מתחילות בייעוץ מקצועי. אנחנו מתמחים בזיהוי הזדמנויות השקעה, 
+                        ליווי עסקאות מורכבות וייעוץ אסטרטגי בתחום הנדל״ן והקרקעות בישראל.
+                    </p>
+                    <ul class="business-features">
+                        <li>זיהוי הזדמנויות השקעה בנדל״ן</li>
+                        <li>ייעוץ בקניית קרקעות לפיתוח</li>
+                        <li>ליווי עסקאות מורכבות</li>
+                        <li>בדיקות משפטיות ורגולטוריות</li>
+                        <li>הערכת שווי ואמדן תשואות</li>
+                        <li>חיבור למשקיעים ויזמים</li>
+                    </ul>
+                    <button class="business-btn" onclick="openDomain('multiestate')">
+                        כנסו לאתר MultiEstate →
+                    </button>
+                </div>
+
+                <div class="business-card">
+                    <div class="business-header">
+                        <div class="business-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=240&fit=crop&crop=center&auto=format&q=80" alt="MultiMarketing - שיווק דיגיטלי" class="business-image">
+                    </div>
+                    <h3>MultiMarketing</h3>
+                    <p class="subtitle">פלטפורמת שיווק דיגיטלי ואתרים עסקיים</p>
+                    <p>
+                        המהפכה הדיגיטלית שלכם מתחילה כאן. MultiMarketing משלב את פלטפורמת WebMaster Pro לבניית אתרים 
+                        עסקיים מתקדמים עם שירותי שיווק דיגיטלי מלאים ואוטומציות חכמות.
+                    </p>
+                    <ul class="business-features">
+                        <li>בניית אתרים עסקיים מקצועיים (WebMaster Pro)</li>
+                        <li>קמפיינים ממוקדים ברשתות החברתיות</li>
+                        <li>SEO מתקדם ואופטימיזציה</li>
+                        <li>אוטומציות שיווק ו-CRM מתקדם</li>
+                        <li>כלי AI ליצירת תוכן</li>
+                        <li>ניהול מוניטין דיגיטלי</li>
+                    </ul>
+                    <button class="business-btn" onclick="openDomain('multimarketing')">
+                        כנסו לאתר MultiMarketing →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 data-target="500">0</h3>
+                    <p>פרויקטים מוצלחים</p>
+                </div>
+                <div class="stat-item">
+                    <h3 data-target="15">0</h3>
+                    <p>שנות ניסיון</p>
+                </div>
+                <div class="stat-item">
+                    <h3 data-target="6">0</h3>
+                    <p>תחומי מומחיות</p>
+                </div>
+                <div class="stat-item">
+                    <h3 data-target="98">0</h3>
+                    <p>% שביעות רצון</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>מה אומרים עלינו</h2>
+                <p>המלצות מלקוחות מרוצים שחוו איתנו את השירות ברמה הגבוהה ביותר</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "עבדנו עם ערדית על שבת החתן שלנו והיא פשוט הפכה את החלום שלנו למציאות. 
+                        כל פרט היה מושלם, השירות היה ברמה עולמית והתוצאה עלתה על כל הציפיות. 
+                        ערדית ומולטיבראון - זה פשוט מקצועיות ללא פשרות!"
+                    </p>
+                    <div class="testimonial-author">דוד ושרה כהן</div>
+                    <div class="testimonial-role">זוג מרוצה • MultiEvents</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "כשהחלטנו להשכיר את הוילה שלנו לא ידענו איך להתחיל. ערדית לא רק עזרה לנו 
+                        עם השיווק והניהול, היא גם הפיקה לנו סרטון מדהים שהפך את המקום שלנו למבוקש ביותר באזור. 
+                        תוך חודשיים היינו עם תפוסה מלאה!"
+                    </p>
+                    <div class="testimonial-author">אבי מזרחי</div>
+                    <div class="testimonial-role">בעל וילה • MultiMedia + MultiStay</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "העסק שלנו קיבל חיים חדשים הודות לMultiMarketing. האתר החדש שבנו עם WebMaster Pro 
+                        הכפיל את המכירות שלנו, והקמפיינים שערדית ניהלה הביאו לנו לקוחות איכותיים בדיוק כמו שרצינו. 
+                        זה שיווק דיגיטלי ברמה אחרת לגמרי!"
+                    </p>
+                    <div class="testimonial-author">רונית לוי</div>
+                    <div class="testimonial-role">בעלת עסק • MultiMarketing</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "ערדית עזרה לנו למצוא את קרקע החלומות שלנו ולהוציא לפועל פרויקט נדל״ן מרווח. 
+                        המקצועיות שלה בתחום והקשרים שלה חסכו לנו זמן יקר וכסף רב. 
+                        בזכותה הפרויקט שלנו הצליח מעבר לכל הציפיות!"
+                    </p>
+                    <div class="testimonial-author">משה וענת דוד</div>
+                    <div class="testimonial-role">משקיעי נדל״ן • MultiEstate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>בואו נתחיל לעבוד יחד</h2>
+                <p>צרו קשר עוד היום ונבחר יחד את התחום או השירות המתאים בדיוק לצרכים שלכם</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>פרטי יצירת קשר</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>טלפון נייד</strong>
+                            <p>050-0000000</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>אימייל עסקי</strong>
+                            <p>erdit@multibrawn.co.il</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p>050-0000000</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>כתובת</strong>
+                            <p>ישראל</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>שעות פעילות</strong>
+                            <p>א'-ה': 8:00-18:00<br>ו': 8:00-14:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>שלחו הודעה</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">שם מלא *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">טלפון *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">אימייל *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="domain">איזה תחום מעניין אתכם?</label>
+                            <select id="domain" name="domain" required>
+                                <option value="">בחרו תחום</option>
+                                <option value="multistay">MultiStay - וילות וצימרים</option>
+                                <option value="multievents">MultiEvents - אירועים פרטיים</option>
+                                <option value="multimedia">MultiMedia - הפקת סרטונים</option>
+                                <option value="multicommunity">MultiCommunity - ניהול קהילות</option>
+                                <option value="multiestate">MultiEstate - נדל״ן וקרקעות</option>
+                                <option value="multimarketing">MultiMarketing - שיווק דיגיטלי</option>
+                                <option value="general">ייעוץ כללי</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">פרטים נוספים</label>
+                            <textarea id="message" name="message" placeholder="ספרו לנו על הפרויקט או השירות שאתם מחפשים..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            שלחו הודעה
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/972500000000" class="whatsapp-float" target="_blank" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn" class="footer-logo-image">
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>תחומי העסק</h4>
+                    <a href="#" onclick="openDomain('multistay')">MultiStay - וילות וצימרים</a>
+                    <a href="#" onclick="openDomain('multievents')">MultiEvents - אירועים פרטיים</a>
+                    <a href="#" onclick="openDomain('multimedia')">MultiMedia - הפקות וידאו</a>
+                    <a href="#" onclick="openDomain('multicommunity')">MultiCommunity - ניהול קהילות</a>
+                    <a href="#" onclick="openDomain('multiestate')">MultiEstate - נדל״ן וקרקעות</a>
+                    <a href="#" onclick="openDomain('multimarketing')">MultiMarketing - שיווק דיגיטלי</a>
+                </div>
+                <div class="footer-section">
+                    <h4>שירותים</h4>
+                    <a href="#">השכרת נופש יוקרתי</a>
+                    <a href="#">תכנון אירועים פרטיים</a>
+                    <a href="#">הפקת סרטונים מקצועית</a>
+                    <a href="#">ניהול קהילות דיגיטליות</a>
+                    <a href="#">השקעות נדל״ן וקרקעות</a>
+                    <a href="#">בניית אתרים ושיווק</a>
+                </div>
+                <div class="footer-section">
+                    <h4>קשר</h4>
+                    <a href="tel:0500000000">050-0000000</a>
+                    <a href="mailto:erdit@multibrawn.co.il">erdit@multibrawn.co.il</a>
+                    <a href="https://wa.me/972500000000" target="_blank">WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 מולטיבראון בע"מ | כל הזכויות שמורות | בניהולה של ערדית בראון</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Loader Management
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            
+            // Hide loader after 3 seconds with smooth animation
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                
+                // Remove loader from DOM after animation completes
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 2500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Header background on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Video Management - Simple and Clean
+        const heroVideo = document.querySelector('.hero-video');
+        
+        if (heroVideo) {
+            console.log('🎬 Video element found');
+            
+            heroVideo.addEventListener('loadeddata', () => {
+                console.log('✅ Video loaded successfully');
+            });
+            
+            heroVideo.addEventListener('error', function(e) {
+                console.log('❌ Video failed to load:', e);
+                // Fallback to animated background
+                const hero = document.querySelector('.hero');
+                hero.style.background = 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%)';
+            });
+
+            // Try to play video
+            heroVideo.play().catch(e => {
+                console.log('Video autoplay blocked, but that\'s normal');
+            });
+        }
+
+        // Stats counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                const suffix = element.textContent.replace(/[\d]/g, '');
+                element.textContent = Math.floor(current) + (suffix || '');
+            }, 20);
+        }
+
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('h3');
+                    const target = parseInt(statNumber.getAttribute('data-target'));
+                    if (target > 0) {
+                        animateCounter(statNumber, target);
+                    }
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stat-item').forEach(item => {
+            statsObserver.observe(item);
+        });
+
+        // Business cards entrance animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.business-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(80px) scale(0.95)';
+            card.style.transition = `opacity 0.8s ease ${index * 0.2}s, transform 0.8s ease ${index * 0.2}s`;
+            observer.observe(card);
+        });
+
+        // Domain links function
+        function openDomain(domain) {
+            const domainUrls = {
+                'multistay': 'https://multistay.multibrawn.co.il',
+                'multievents': 'https://multievents.multibrawn.co.il',
+                'multimedia': 'https://multimedia.multibrawn.co.il',
+                'multicommunity': 'https://multicommunity.multibrawn.co.il',
+                'multiestate': 'https://multiestate.multibrawn.co.il',
+                'multimarketing': 'https://multimarketing.multibrawn.co.il'
+            };
+            
+            // For now, show alert since individual sites don't exist yet
+            alert(`🚀 בקרוב! ${domain.toUpperCase()} יהיה זמין בכתובת: ${domainUrls[domain] || 'בהכנה'}`);
+            
+            // When sites are ready, use this:
+            // window.open(domainUrls[domain], '_blank');
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create WhatsApp message
+            const message = `🌟 בקשה חדשה ממולטיבראון:
+
+👤 שם: ${data.name}
+📞 טלפון: ${data.phone}
+📧 אימייל: ${data.email}
+🎯 תחום מעניין: ${data.domain}
+📝 פרטים נוספים: ${data.message || 'לא צוין'}
+
+נשמח לשמוע מכם ולעזור! 🚀`;
+            
+            const whatsappUrl = `https://wa.me/972500000000?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            alert('🎉 תודה רבה! ההודעה נשלחה בהצלחה. ערדית תחזור אליכם בהקדם!');
+            this.reset();
+        });
+
+        // Testimonials animation
+        document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `opacity 0.8s ease ${index * 0.3}s, transform 0.8s ease ${index * 0.3}s`;
+            
+            const testimonialsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            testimonialsObserver.observe(card);
+        });
+
+        // Luxury particles effect
+        function createLuxuryParticle() {
+            const particles = ['✨', '💎', '🌟', '⭐', '💫'];
+            const particle = particles[Math.floor(Math.random() * particles.length)];
+            
+            const element = document.createElement('div');
+            element.textContent = particle;
+            element.style.position = 'fixed';
+            element.style.left = Math.random() * 100 + '%';
+            element.style.top = '100%';
+            element.style.fontSize = Math.random() * 20 + 15 + 'px';
+            element.style.pointerEvents = 'none';
+            element.style.transition = 'all 20s linear';
+            element.style.zIndex = '2';
+            element.style.opacity = '0.6';
+            element.style.filter = 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.5))';
+            
+            document.body.appendChild(element);
+            
+            setTimeout(() => {
+                element.style.top = '-100px';
+                element.style.transform = 'translateX(' + (Math.random() * 400 - 200) + 'px) rotate(720deg)';
+                element.style.opacity = '0';
+            }, 100);
+            
+            setTimeout(() => {
+                element.remove();
+            }, 20000);
+        }
+
+        // Create luxury particles periodically
+        setInterval(createLuxuryParticle, 4000);
+
+        // Hero content entrance animation on load
+        window.addEventListener('load', function() {
+            const heroElements = document.querySelectorAll('.fade-in-up');
+            
+            heroElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(60px)';
+                element.style.transition = 'all 1s ease';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200 + 500);
+            });
+        });
+
+        // Add floating animation to domain cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const domainCards = document.querySelectorAll('.domain-card');
+            
+            domainCards.forEach((card, index) => {
+                const floatDelay = index * 0.8;
+                const floatDuration = 4 + (index * 0.4);
+                
+                card.style.animation = `domainFloat ${floatDuration}s ease-in-out ${floatDelay}s infinite`;
+            });
+            
+            // Add the floating keyframes
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes domainFloat {
+                    0%, 100% { 
+                        transform: translateY(0px) rotate(0deg);
+                    }
+                    25% { 
+                        transform: translateY(-12px) rotate(1deg);
+                    }
+                    50% { 
+                        transform: translateY(0px) rotate(0deg);
+                    }
+                    75% { 
+                        transform: translateY(-8px) rotate(-1deg);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Premium scroll animations
+        function premiumScrollAnimations() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > sectionTop - windowHeight + 200 && scrollY < sectionTop + sectionHeight) {
+                    section.style.transform = 'translateY(0)';
+                    section.style.opacity = '1';
+                }
+            });
+        }
+
+        // Initialize scroll animations
+        window.addEventListener('scroll', premiumScrollAnimations);
+        
+        // Initialize sections for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section:not(.hero)');
+            sections.forEach(section => {
+                section.style.transform = 'translateY(30px)';
+                section.style.opacity = '0.8';
+                section.style.transition = 'all 0.8s ease';
+            });
+        });
+
+        // Million dollar performance optimizations
+        const performanceOptimizations = {
+            // Lazy load images
+            lazyLoadImages: function() {
+                const images = document.querySelectorAll('img[data-src]');
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                images.forEach(img => imageObserver.observe(img));
+            },
+            
+            // Preload critical resources
+            preloadCriticalResources: function() {
+                const criticalResources = [
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+                ];
+                
+                criticalResources.forEach(url => {
+                    const link = document.createElement('link');
+                    link.rel = 'preload';
+                    link.as = 'style';
+                    link.href = url;
+                    document.head.appendChild(link);
+                });
+            },
+            
+            // Optimize animations for 60fps
+            optimizeAnimations: function() {
+                const animatedElements = document.querySelectorAll('.domain-card, .business-card, .testimonial-card');
+                animatedElements.forEach(element => {
+                    element.style.willChange = 'transform, opacity';
+                });
+            }
+        };
+
+        // Initialize performance optimizations
+        document.addEventListener('DOMContentLoaded', function() {
+            performanceOptimizations.lazyLoadImages();
+            performanceOptimizations.preloadCriticalResources();
+            performanceOptimizations.optimizeAnimations();
+        });
+
+        // Console styling for developers
+        console.log('%c🎯 MULTIBRAWN WEBSITE', 'color: #FFD700; font-size: 20px; font-weight: bold;');
+        console.log('%c💎 Million Dollar Design by WebMaster Pro', 'color: #00D4FF; font-size: 14px;');
+        console.log('%c🎬 Now featuring your custom Imgur video!', 'color: #8A2BE2; font-size: 12px;');
+    </script>
+</body>
+</html>
