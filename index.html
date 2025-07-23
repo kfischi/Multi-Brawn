@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מולטיבראון | 6 תחומים, פתרון אחד מושלם | ערדית בראון</title>
-    <meta name="description" content="מולטיבראון - האקוסיסטם המושלם לנופש, אירועים, מדיה, קהילה, שיווק דיגיטלי ונדל״ן. בניהולה המקצועי של ערדית בראון.">
+    <meta name="description" content="מולטיבראון - האקוסיסטם המושלם לנופש, אירועים, מדיה, קהילה, שיווק דיגיטלי ונדל״ן. בניהולה המקצועית של ערדית בראון.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -189,15 +189,14 @@
 
         /* Hero Section with Video */
         .hero {
-            min-height: 100vh; /* מוגדר למינימום 100% מגובה המסך */
+            height: 100vh; /* עכשיו Hero מכסה את כל גובה המסך */
             display: flex;
             align-items: center; /* מרכז אנכית */
             justify-content: center; /* מרכז אופקית */
             position: relative;
             overflow: hidden;
-            padding: 8rem 0 6rem; /* השארת ריווח בטוח להאדר ולפוטר עתידי */
             background: var(--deep-black);
-            text-align: center; /* וודא שהטקסטים מרוכזים */
+            text-align: center;
         }
 
         .hero-video {
@@ -209,7 +208,7 @@
             object-fit: cover; /* יבטיח שהוידאו יכסה את כל השטח */
             z-index: 1;
             opacity: 1;
-            filter: brightness(0.8) contrast(1.2) saturate(1.1); /* מעט אפקטים ויזואליים */
+            filter: brightness(0.7) contrast(1.2) saturate(1.1); /* מעט יותר כהה כדי שהטקסט יבלוט */
         }
 
         .hero-overlay {
@@ -238,26 +237,43 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 10vw, 8rem); /* גודל גדול יותר לבלטות */
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: 5px; /* מרווח גדול יותר בין אותיות */
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 30%, #00D4FF 70%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.9); /* זוהר חזק יותר */
+            filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.6));
+            animation: titleGlow 8s ease-in-out infinite;
+        }
+
+        /* New Intro Section - holds all the removed content from Hero */
+        .intro-section {
+            background: var(--surface-dark);
+            padding: 10rem 0 6rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 900;
             margin-bottom: 2.5rem;
             line-height: 1.1;
             letter-spacing: 3px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 30%, #00D4FF 70%, #FFFFFF 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-gold) 30%, var(--accent-blue) 70%, #FFFFFF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
             filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.5));
-            animation: titleGlow 8s ease-in-out infinite;
+            animation: titleGlow 8s ease-in-out infinite; /* אותה אנימציה יוקרתית */
         }
 
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.3)); }
-            50% { filter: drop-shadow(0 8px 40px rgba(0, 212, 255, 0.4)); }
-        }
-
-        .hero .subtitle {
+        .intro-section .subtitle {
             font-size: clamp(1.5rem, 5vw, 2.2rem);
             margin-bottom: 3rem;
             font-weight: 600;
@@ -267,7 +283,7 @@
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
         }
 
-        .hero .description {
+        .intro-section .description {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             margin-bottom: 4rem;
             color: var(--text-light);
@@ -283,7 +299,7 @@
             box-shadow: var(--shadow-dark);
         }
 
-        /* Business Domains Preview */
+        /* Business Domains Preview (in Intro Section now) */
         .domains-preview {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -508,10 +524,6 @@
                 margin: 1rem 0;
             }
 
-            .hero {
-                padding: 10rem 0 6rem;
-            }
-
             .domains-preview {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
@@ -560,7 +572,7 @@
                 </a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">בית</a></li>
-                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#intro">פתרונות</a></li> <li><a href="#about">אודות</a></li>
                     <li><a href="#contact">צור קשר</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -586,68 +598,73 @@
         
         <div class="container">
             <div class="hero-content">
-                <h1 class="fade-in-up">ברוכים הבאים לעולם שבו כל חלום הופך למציאות</h1>
-                <p class="subtitle fade-in-up">6 תחומים • פתרון אחד מושלם</p>
-                <p class="description fade-in-up">
-                    מנופש יוקרתי ואירועים בלתי נשכחים, דרך הפקות מדיה מרהיבות וניהול קהילות, 
-                    נדל״ן וקרקעות, ועד לשיווק דיגיטלי מתקדם - כל מה שאתם צריכים במקום אחד.
-                </p>
+                <h1 class="fade-in-up">MULTIBRAWN</h1> </div>
+        </div>
+    </section>
 
-                <div class="domains-preview">
-                    <div class="domain-card fade-in-up">
-                        <div class="domain-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h4>MultiStay</h4>
-                        <p>וילות וצימרים יוקרתיים</p>
-                    </div>
-                    <div class="domain-card fade-in-up">
-                        <div class="domain-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4>MultiEvents</h4>
-                        <p>אירועים פרטיים וחתונות</p>
-                    </div>
-                    <div class="domain-card fade-in-up">
-                        <div class="domain-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h4>MultiMedia</h4>
-                        <p>הפקת סרטונים אומנותיים</p>
-                    </div>
-                    <div class="domain-card fade-in-up">
-                        <div class="domain-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>MultiCommunity</h4>
-                        <p>ניהול קהילות דיגיטליות</p>
-                    </div>
-                    <div class="domain-card fade-in-up">
-                        <div class="domain-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h4>MultiEstate</h4>
-                        <p>נדל״ן וקרקעות</p>
-                    </div>
-                    <div class="domain-card fade-in-up">
-                        <div class="domain-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h4>MultiMarketing</h4>
-                        <p>שיווק דיגיטלי ואתרים</p>
-                    </div>
-                </div>
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <h2 class="fade-in-up">ברוכים הבאים לעולם שבו כל חלום הופך למציאות</h2>
+            <p class="subtitle fade-in-up">6 תחומים • פתרון אחד מושלם</p>
+            <p class="description fade-in-up">
+                מנופש יוקרתי ואירועים בלתי נשכחים, דרך הפקות מדיה מרהיבות וניהול קהילות, 
+                נדל״ן וקרקעות, ועד לשיווק דיגיטלי מתקדם - כל מה שאתם צריכים במקום אחד.
+            </p>
 
-                <div class="cta-buttons">
-                    <a href="#about" class="btn btn-primary fade-in-up">
-                        <i class="fas fa-arrow-down"></i>
-                        גלו את העולם שלנו
-                    </a>
-                    <a href="https://wa.me/972500000000" class="btn btn-secondary fade-in-up" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        יצירת קשר מיידית
-                    </a>
+            <div class="domains-preview">
+                <div class="domain-card fade-in-up">
+                    <div class="domain-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>MultiStay</h4>
+                    <p>וילות וצימרים יוקרתיים</p>
                 </div>
+                <div class="domain-card fade-in-up">
+                    <div class="domain-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>MultiEvents</h4>
+                    <p>אירועים פרטיים וחתונות</p>
+                </div>
+                <div class="domain-card fade-in-up">
+                    <div class="domain-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h4>MultiMedia</h4>
+                    <p>הפקת סרטונים אומנותיים</p>
+                </div>
+                <div class="domain-card fade-in-up">
+                    <div class="domain-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>MultiCommunity</h4>
+                    <p>ניהול קהילות דיגיטליות</p>
+                </div>
+                <div class="domain-card fade-in-up">
+                    <div class="domain-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>MultiEstate</h4>
+                    <p>נדל״ן וקרקעות</p>
+                </div>
+                <div class="domain-card fade-in-up">
+                    <div class="domain-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4>MultiMarketing</h4>
+                    <p>שיווק דיגיטלי ואתרים</p>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary fade-in-up">
+                    <i class="fas fa-arrow-down"></i>
+                    גלו את העולם שלנו
+                </a>
+                <a href="https://wa.me/972500000000" class="btn btn-secondary fade-in-up" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    יצירת קשר מיידית
+                </a>
             </div>
         </div>
     </section>
