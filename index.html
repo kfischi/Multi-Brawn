@@ -185,8 +185,8 @@
             height: 100%;
             object-fit: cover;
             z-index: 1;
-            opacity: 0.6;
-            filter: brightness(0.5) contrast(1.2) saturate(1.1);
+            opacity: 0.9;
+            filter: brightness(0.8) contrast(1.3) saturate(1.2);
         }
 
         .hero-overlay {
@@ -226,13 +226,13 @@
 
         .luxury-badge {
             display: inline-block;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(30px);
             border: 2px solid var(--primary-gold);
             color: var(--text-white);
             padding: 1.5rem 4rem;
             border-radius: 100px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 3px;
@@ -240,7 +240,8 @@
             position: relative;
             overflow: hidden;
             animation: luxuryGlow 6s ease-in-out infinite;
-            box-shadow: var(--shadow-gold);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .luxury-badge::before {
@@ -265,24 +266,109 @@
             }
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* Hero Logo Animation */
+        .hero-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: heroLogoEntrance 2s ease-out 0.5s forwards;
+        }
+
+        .hero-logo-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+            animation: heroCubeRotate 8s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-logo-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: var(--gradient-luxury);
+            border-radius: 40px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: heroLogoPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes heroLogoEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(100px) scale(0.5) rotate(-180deg);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateY(-20px) scale(1.1) rotate(-90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes heroCubeRotate {
+            0%, 100% { 
+                transform: rotateY(0deg) rotateX(0deg);
+                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+            }
+            25% { 
+                transform: rotateY(90deg) rotateX(15deg);
+                filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.6));
+            }
+            50% { 
+                transform: rotateY(180deg) rotateX(0deg);
+                filter: drop-shadow(0 0 35px rgba(138, 43, 226, 0.5));
+            }
+            75% { 
+                transform: rotateY(270deg) rotateX(-15deg);
+                filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.6));
+            }
+        }
+
+        @keyframes heroLogoPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        .hero-logo-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 0.8;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(4rem, 10vw, 7rem);
             font-weight: 900;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1rem;
+            margin-top: -3rem;
             line-height: 0.9;
             letter-spacing: 6px;
             background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 30%, #00D4FF 70%, #FFFFFF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
-            filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.3));
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+            filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.5));
             animation: titleGlow 8s ease-in-out infinite;
         }
 
@@ -293,7 +379,8 @@
 
         .hero .subtitle {
             font-size: clamp(1.5rem, 5vw, 2.2rem);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            margin-top: -1rem;
             font-weight: 600;
             color: var(--text-white);
             letter-spacing: 2px;
@@ -303,15 +390,16 @@
 
         .hero .description {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
+            margin-top: 1rem;
             color: var(--text-light);
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(20px);
-            padding: 3rem;
+            padding: 2.5rem;
             border-radius: 30px;
             border: 1px solid rgba(255, 215, 0, 0.3);
             box-shadow: var(--shadow-dark);
@@ -322,7 +410,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin: 5rem 0;
+            margin: 3rem 0;
             max-width: 1300px;
             margin-left: auto;
             margin-right: auto;
@@ -422,7 +510,7 @@
             gap: 2.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 4rem;
+            margin-top: 2.5rem;
         }
 
         .btn {
@@ -1188,8 +1276,150 @@
             font-weight: 500;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
+        /* Footer Logo */
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+            transition: all 0.5s ease;
+        }
+
+        .footer-logo-image:hover {
+            transform: scale(1.15) rotate(15deg);
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
+        }
+
+        /* About Section Logo */
+        .about-brand {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .about-brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.4));
+            animation: aboutLogoSpin 12s linear infinite;
+        }
+
+        @keyframes aboutLogoSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.05); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .about-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        /* Page Loader with Logo */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 40px;
+            margin-bottom: 2rem;
+            animation: loaderSpin 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+        }
+
+        @keyframes loaderSpin {
+            0% { 
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+            }
+            25% { 
+                transform: rotate(90deg) scale(1.1);
+                filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.7));
+            }
+            50% { 
+                transform: rotate(180deg) scale(1);
+                filter: drop-shadow(0 0 45px rgba(138, 43, 226, 0.6));
+            }
+            75% { 
+                transform: rotate(270deg) scale(1.1);
+                filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.7));
+            }
+            100% { 
+                transform: rotate(360deg) scale(1);
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+            }
+        }
+
+        .loader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { 
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+                transform: scale(1);
+            }
+            100% { 
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+                transform: scale(1.02);
+            }
+        }
+
+        .loader-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
             .domains-grid {
                 grid-template-columns: 1fr;
                 max-width: 700px;
@@ -1259,6 +1489,17 @@
                 padding: 10rem 0 6rem;
             }
 
+            .luxury-badge {
+                margin-top: -4rem;
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                margin-top: -2rem;
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
             .domains-preview {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
@@ -1305,9 +1546,11 @@
                 justify-content: center;
             }
 
-            /* Disable video on small screens for performance */
+            /* Enable video on small screens with better visibility */
             .hero-video {
-                display: none;
+                display: block;
+                opacity: 0.85;
+                filter: brightness(0.7) contrast(1.2);
             }
             
             .hero {
@@ -1373,11 +1616,21 @@
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Loading" class="loader-logo">
+        <div class="loader-text">MULTIBRAWN</div>
+        <div class="loader-subtitle">טוען את החוויה המושלמת...</div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <nav class="container">
             <div class="nav">
-                <a href="#" class="logo">MULTIBRAWN</a>
+                <a href="#" class="logo">
+                    <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Logo" class="logo-image">
+                    <span class="logo-text">MULTIBRAWN</span>
+                </a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">בית</a></li>
                     <li><a href="#about">אודות</a></li>
@@ -1417,11 +1670,11 @@
         
         <div class="container">
             <div class="hero-content">
-                <div class="luxury-badge fade-in-up">
+                <div class="luxury-badge fade-in-up" style="margin-top: -8rem;">
                     <i class="fas fa-crown"></i>
                     האקוסיסטם העסקי המושלם
                 </div>
-                <h1 class="fade-in-up">MULTIBRAWN</h1>
+                <h1 class="fade-in-up" style="margin-top: -2rem;">MULTIBRAWN</h1>
                 <p class="subtitle fade-in-up">6 תחומים • פתרון אחד מושלם</p>
                 <p class="description fade-in-up">
                     ברוכים הבאים לעולם שבו כל חלום הופך למציאות. מנופש יוקרתי ואירועים בלתי נשכחים, 
@@ -1491,6 +1744,16 @@
     <!-- About Erdit Section -->
     <section id="about" class="about-erdit">
         <div class="container">
+            <!-- Brand Section -->
+            <div class="about-brand">
+                <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Brand" class="about-brand-logo">
+                <h3>המותג שמחבר הכל</h3>
+                <p>
+                    מולטיבראון לא רק חברה - זה אקוסיסטם שלם שמביא פתרונות מושלמים בכל תחום. 
+                    כמו קובייה של רוביק, כל צד מייצג תחום אחר, אבל הכל עובד יחד בהרמוניה מושלמת.
+                </p>
+            </div>
+
             <div class="about-content">
                 <div class="about-image">
                     <div class="image-frame">
@@ -1882,6 +2145,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <!-- Footer Logo -->
+            <div class="footer-logo">
+                <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn" class="footer-logo-image">
+            </div>
+            
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>תחומי העסק</h4>
@@ -1915,6 +2183,21 @@
     </footer>
 
     <script>
+        // Page Loader Management
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            
+            // Hide loader after 3 seconds with smooth animation
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                
+                // Remove loader from DOM after animation completes
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 2500);
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2015,9 +2298,9 @@
                     heroVideo.play().catch(e => console.log('Manual play failed:', e));
                 }
                 
-                // Make video more visible
-                heroVideo.style.opacity = '0.7';
-                heroVideo.style.filter = 'brightness(0.6) contrast(1.2)';
+                // Make video much more visible
+                heroVideo.style.opacity = '0.95';
+                heroVideo.style.filter = 'brightness(0.9) contrast(1.4) saturate(1.3)';
             }, 2000);
 
             // Pause video when not visible (save bandwidth)
