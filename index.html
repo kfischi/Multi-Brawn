@@ -185,8 +185,8 @@
             height: 100%;
             object-fit: cover;
             z-index: 1;
-            opacity: 0.4;
-            filter: brightness(0.3) contrast(1.3) saturate(1.1);
+            opacity: 0.6;
+            filter: brightness(0.5) contrast(1.2) saturate(1.1);
         }
 
         .hero-overlay {
@@ -1394,21 +1394,18 @@
 
     <!-- Hero Section with Video Background -->
     <section id="home" class="hero">
-        <!-- Background Video - Replace with your video URL -->
+        <!-- Background Video - Your Imgur video -->
         <video 
             class="hero-video"
             autoplay 
             muted 
             loop 
             playsinline
-            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23000000'/%3E%3C/svg%3E"
+            poster="https://i.imgur.com/04x9Rfw.jpg"
         >
-            <!-- 
-            Replace these sources with your video URLs:
-            <source src="https://imgur.com/04x9Rfw" type="video/mp4">
-            <source src="https://imgur.com/a/SoQ3L1Q" type="video/webm">
-            -->
+            <source src="https://i.imgur.com/04x9Rfw.mp4" type="video/mp4">
             <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/3128671/3128671-uhd_2560_1440_25fps.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         
@@ -1963,22 +1960,65 @@
             }
         });
 
-        // Video Management
+        // Video Management with Enhanced Debugging
         const heroVideo = document.querySelector('.hero-video');
         
         if (heroVideo) {
-            // Ensure video plays
-            heroVideo.addEventListener('loadedmetadata', function() {
-                this.play().catch(e => console.log('Video autoplay failed:', e));
+            console.log('🎬 Video element found:', heroVideo);
+            
+            // Enhanced video loading
+            heroVideo.addEventListener('loadstart', () => {
+                console.log('📥 Video loading started...');
             });
             
-            // Handle video error - fallback to dark background
-            heroVideo.addEventListener('error', function() {
-                console.log('Video failed to load, using dark background');
-                const hero = document.querySelector('.hero');
-                hero.style.background = 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%)';
-                this.style.display = 'none';
+            heroVideo.addEventListener('loadeddata', () => {
+                console.log('✅ Video data loaded successfully');
             });
+            
+            heroVideo.addEventListener('canplay', () => {
+                console.log('▶️ Video can start playing');
+                heroVideo.play().catch(e => {
+                    console.log('❌ Video autoplay failed:', e);
+                    // Try to make video more visible if autoplay fails
+                    heroVideo.style.opacity = '0.8';
+                    heroVideo.style.filter = 'brightness(0.7) contrast(1.1)';
+                });
+            });
+            
+            heroVideo.addEventListener('playing', () => {
+                console.log('🎥 Video is now playing!');
+            });
+            
+            // Enhanced error handling
+            heroVideo.addEventListener('error', function(e) {
+                console.log('❌ Video failed to load:', e);
+                console.log('📊 Video error details:', {
+                    error: this.error,
+                    networkState: this.networkState,
+                    readyState: this.readyState,
+                    src: this.src
+                });
+                
+                // Fallback to dark background with better visibility
+                const hero = document.querySelector('.hero');
+                hero.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%)';
+                this.style.display = 'none';
+                
+                // Show fallback message
+                console.log('🔄 Switched to fallback background');
+            });
+
+            // Force video to be more visible
+            setTimeout(() => {
+                if (heroVideo.paused) {
+                    console.log('⚠️ Video is still paused, trying to play...');
+                    heroVideo.play().catch(e => console.log('Manual play failed:', e));
+                }
+                
+                // Make video more visible
+                heroVideo.style.opacity = '0.7';
+                heroVideo.style.filter = 'brightness(0.6) contrast(1.2)';
+            }, 2000);
 
             // Pause video when not visible (save bandwidth)
             const videoObserver = new IntersectionObserver((entries) => {
@@ -1996,6 +2036,8 @@
             });
             
             videoObserver.observe(heroVideo);
+        } else {
+            console.log('❌ Video element not found!');
         }
 
         // Stats counter animation
