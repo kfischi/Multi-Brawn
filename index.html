@@ -10,24 +10,27 @@
 
     <style>
         :root {
-            --primary-gold: #FFD700;
-            --secondary-silver: #C0C0C0;
-            --accent-blue: #00D4FF;
-            --luxury-purple: #8A2BE2;
+            --primary-electric: #00FF88;
+            --secondary-neon: #FF0080;
+            --accent-cyan: #00FFFF;
+            --luxury-purple: #BB00FF;
+            --vibrant-orange: #FF6600;
             --deep-black: #000000;
-            --rich-dark: #0A0A0A;
+            --rich-dark: #0F0F0F;
             --surface-dark: #1A1A1A;
             --surface-lighter: #2A2A2A;
             --text-white: #FFFFFF;
             --text-light: #E0E0E0;
             --text-muted: #AAAAAA;
-            --gradient-luxury: linear-gradient(135deg, #FFD700 0%, #00D4FF 50%, #8A2BE2 100%);
+            --gradient-luxury: linear-gradient(135deg, #00FF88 0%, #00FFFF 25%, #BB00FF 75%, #FF0080 100%);
+            --gradient-electric: linear-gradient(135deg, #00FF88 0%, #00FFFF 50%, #BB00FF 100%);
             --gradient-dark: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
-            --gradient-overlay: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(26,26,26,0.3) 50%, rgba(0,0,0,0.6) 100%);
-            --shadow-gold: 0 0 50px rgba(255, 215, 0, 0.3);
-            --shadow-blue: 0 0 50px rgba(0, 212, 255, 0.3);
+            --gradient-overlay: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(26,26,26,0.2) 50%, rgba(0,0,0,0.5) 100%);
+            --shadow-electric: 0 0 50px rgba(0, 255, 136, 0.4);
+            --shadow-cyan: 0 0 50px rgba(0, 255, 255, 0.4);
+            --shadow-purple: 0 0 50px rgba(187, 0, 255, 0.4);
             --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.8);
-            --glow-text: 0 0 20px rgba(255, 255, 255, 0.5);
+            --glow-text: 0 0 20px rgba(0, 255, 136, 0.6);
         }
 
         * {
@@ -62,7 +65,7 @@
             width: 100%;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(40px);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.4);
             z-index: 1000;
             transition: all 0.5s ease;
             box-shadow: 0 4px 40px rgba(0, 0, 0, 0.9);
@@ -70,7 +73,7 @@
 
         .header.scrolled {
             background: rgba(0, 0, 0, 0.98);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.5);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.6);
             box-shadow: 0 8px 60px rgba(0, 0, 0, 0.95);
         }
 
@@ -83,7 +86,7 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; /* גודל הטקסט MultiBrawn בהדר */
+            font-size: 2.8rem;
             font-weight: 700;
             background: var(--gradient-luxury);
             -webkit-background-clip: text;
@@ -94,24 +97,29 @@
             position: relative;
             display: flex;
             align-items: center;
-            gap: 1.2rem; /* מרווח בין הלוגו לטקסט */
+            gap: 1rem;
         }
 
         .logo-image {
-            width: 77px; /* 10% יותר מ-70px (70 * 1.1 = 77) */
-            height: 77px; /* 10% יותר מ-70px */
+            width: 60px;
+            height: 60px;
             border-radius: 15px;
             transition: all 0.6s ease;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); /* חיזוק ההבלטה */
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
             animation: logoFloat 6s ease-in-out infinite;
         }
 
+        .logo-image:hover {
+            transform: scale(1.1) rotate(10deg);
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+        }
+
         @keyframes logoFloat {
-            0%, 100% {
+            0%, 100% { 
                 transform: translateY(0) rotate(0deg);
                 filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
             }
-            50% {
+            50% { 
                 transform: translateY(-8px) rotate(5deg);
                 filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.4));
             }
@@ -121,7 +129,7 @@
             content: 'by Erdit Brown';
             position: absolute;
             bottom: -10px;
-            left: 87px; /* התאמה למיקום לאחר הגדלת הלוגו (80 + 7, בערך) */
+            left: 70px;
             font-size: 0.35em;
             color: var(--text-muted);
             font-family: 'Inter', sans-serif;
@@ -189,15 +197,13 @@
 
         /* Hero Section - Million Dollar Video Background */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 0; /* ללא מרווחים כדי למקסם את שטח הוידאו */
+            padding: 8rem 0 6rem;
             background: var(--deep-black);
-            text-align: center;
         }
 
         .hero-video {
@@ -209,7 +215,7 @@
             object-fit: cover;
             z-index: 1;
             opacity: 1;
-            filter: brightness(0.7) contrast(1.2) saturate(1.1);
+            filter: brightness(0.8) contrast(1.2) saturate(1.1);
         }
 
         .hero-overlay {
@@ -245,7 +251,153 @@
             text-align: center;
             max-width: 1100px;
             margin: 0 auto;
-            /* הוסר כל התוכן כדי להבליט את הוידאו */
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 30%, #00D4FF 70%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+            filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.5));
+            animation: titleGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.3)); }
+            50% { filter: drop-shadow(0 8px 40px rgba(0, 212, 255, 0.4)); }
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            margin-bottom: 3rem;
+            font-weight: 600;
+            color: var(--text-white);
+            letter-spacing: 2px;
+            line-height: 1.3;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .description {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 4rem;
+            color: var(--text-light);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: var(--shadow-dark);
+        }
+
+        /* Business Domains Preview - Million Dollar Style */
+        .domains-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 5rem 0;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .domain-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(40px);
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-dark);
+        }
+
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-luxury);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.3);
+            border-color: var(--primary-gold);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .domain-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .domain-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-luxury);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-gold);
+            position: relative;
+        }
+
+        .domain-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: var(--gradient-luxury);
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: iconGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes iconGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        .domain-icon i {
+            font-size: 2rem;
+            color: var(--deep-black);
+            font-weight: 900;
+        }
+
+        .domain-card h4 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+            letter-spacing: 1px;
+        }
+
+        .domain-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-weight: 500;
         }
 
         .cta-buttons {
@@ -290,28 +442,28 @@
         }
 
         .btn-primary {
-            background: var(--gradient-luxury);
+            background: var(--gradient-electric);
             color: var(--deep-black);
-            box-shadow: var(--shadow-gold);
+            box-shadow: var(--shadow-electric);
             border: 2px solid transparent;
         }
 
         .btn-primary:hover {
             transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 80px rgba(255, 215, 0, 0.6);
+            box-shadow: 0 20px 80px rgba(0, 255, 136, 0.6);
         }
 
         .btn-secondary {
             background: rgba(0, 0, 0, 0.8);
             color: var(--text-white);
-            border: 2px solid var(--primary-gold);
+            border: 2px solid var(--primary-electric);
             backdrop-filter: blur(20px);
         }
 
         .btn-secondary:hover {
             transform: translateY(-8px) scale(1.05);
-            background: rgba(255, 215, 0, 0.1);
-            box-shadow: var(--shadow-gold);
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: var(--shadow-electric);
         }
 
         /* About Section - Dark Luxury */
@@ -714,10 +866,10 @@
         .stat-item h3 {
             font-size: clamp(3.5rem, 10vw, 5.5rem);
             font-weight: 900;
-            color: var(--primary-gold);
             margin-bottom: 1.5rem;
-            font-family: 'Playfair Display', serif;
+            color: var(--primary-gold);
             text-shadow: var(--glow-text);
+            font-family: 'Playfair Display', serif;
         }
 
         .stat-item p {
@@ -1019,7 +1171,7 @@
             font-weight: 500;
         }
 
-        /* Footer Logo (uses the same as header for consistency) */
+        /* Footer Logo */
         .footer-logo {
             display: flex;
             justify-content: center;
@@ -1027,7 +1179,7 @@
         }
 
         .footer-logo-image {
-            width: 80px; /* גודל רגיל עבור לוגו בפוטר */
+            width: 80px;
             height: 80px;
             border-radius: 20px;
             filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
@@ -1038,28 +1190,40 @@
             transform: scale(1.15) rotate(15deg);
             filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
         }
-        
-        /* New styling for the "about-brand" text, now it's just a general section title */
-        .general-section-title {
+
+        /* About Section Logo */
+        .about-brand {
             text-align: center;
-            margin-bottom: 6rem; /* מרווח תחתון */
+            margin-bottom: 6rem;
+        }
+
+        .about-brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.4));
+            animation: aboutLogoSpin 12s linear infinite;
+        }
+
+        @keyframes aboutLogoSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.05); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .about-brand h3 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem); /* גודל פונט מותאם */
+            font-size: 2.5rem;
             font-weight: 900;
             background: var(--gradient-luxury);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 2rem; /* מרווח בין הכותרת לתיאור */
+            margin-bottom: 1rem;
         }
-        .general-section-description {
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
-            color: var(--text-light);
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
 
         /* Page Loader with Logo */
         .page-loader {
@@ -1092,23 +1256,23 @@
         }
 
         @keyframes loaderSpin {
-            0% {
+            0% { 
                 transform: rotate(0deg) scale(1);
                 filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
             }
-            25% {
+            25% { 
                 transform: rotate(90deg) scale(1.1);
                 filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.7));
             }
-            50% {
+            50% { 
                 transform: rotate(180deg) scale(1);
                 filter: drop-shadow(0 0 45px rgba(138, 43, 226, 0.6));
             }
-            75% {
+            75% { 
                 transform: rotate(270deg) scale(1.1);
                 filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.7));
             }
-            100% {
+            100% { 
                 transform: rotate(360deg) scale(1);
                 filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
             }
@@ -1128,11 +1292,11 @@
         }
 
         @keyframes textGlow {
-            0% {
+            0% { 
                 filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
                 transform: scale(1);
             }
-            100% {
+            100% { 
                 filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
                 transform: scale(1.02);
             }
@@ -1218,7 +1382,12 @@
             }
 
             .hero {
-                padding: 0; /* וודא שאין ריפוד ב-Hero במובייל */
+                padding: 10rem 0 6rem;
+            }
+
+            .domains-preview {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
 
             .domain-card {
@@ -1268,9 +1437,8 @@
                 filter: brightness(0.8) contrast(1.2);
             }
             
-            /* Remove fallback background for hero if video doesn't play */
             .hero {
-                background: var(--deep-black); /* רקע שחור עמוק במקום גרדיאנט אם הוידאו לא מוצג */
+                background: linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%);
             }
         }
 
@@ -1283,7 +1451,7 @@
                 font-size: 2.5rem;
             }
 
-            .domains-grid {
+            .domains-preview {
                 grid-template-columns: 1fr;
             }
 
@@ -1332,16 +1500,18 @@
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Loading" class="loader-logo">
         <div class="loader-text">MULTIBRAWN</div>
         <div class="loader-subtitle">טוען את החוויה המושלמת...</div>
     </div>
 
+    <!-- Header -->
     <header class="header" id="header">
         <nav class="container">
             <div class="nav">
-                <a href="#home" class="logo">
+                <a href="#" class="logo">
                     <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Logo" class="logo-image">
                     <span class="logo-text">MULTIBRAWN</span>
                 </a>
@@ -1359,7 +1529,9 @@
         </nav>
     </header>
 
+    <!-- Hero Section with Video Background -->
     <section id="home" class="hero">
+        <!-- Your Imgur Video -->
         <video 
             class="hero-video"
             autoplay 
@@ -1371,23 +1543,94 @@
             <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
         </video>
         
+        <!-- Video Overlay -->
         <div class="hero-overlay"></div>
         
+        <!-- Animated Particles -->
         <div class="hero-particles"></div>
         
         <div class="container">
             <div class="hero-content">
+                <h1 class="fade-in-up">ברוכים הבאים לעולם שבו כל חלום הופך למציאות</h1>
+                <p class="subtitle fade-in-up">6 תחומים • פתרון אחד מושלם</p>
+                <p class="description fade-in-up">
+                    מנופש יוקרתי ואירועים בלתי נשכחים, דרך הפקות מדיה מרהיבות וניהול קהילות, 
+                    נדל״ן וקרקעות, ועד לשיווק דיגיטלי מתקדם - כל מה שאתם צריכים במקום אחד.
+                </p>
+
+                <!-- Business Domains Preview -->
+                <div class="domains-preview">
+                    <div class="domain-card fade-in-up">
+                        <div class="domain-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>MultiStay</h4>
+                        <p>וילות וצימרים יוקרתיים</p>
+                    </div>
+                    <div class="domain-card fade-in-up">
+                        <div class="domain-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>MultiEvents</h4>
+                        <p>אירועים פרטיים וחתונות</p>
+                    </div>
+                    <div class="domain-card fade-in-up">
+                        <div class="domain-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4>MultiMedia</h4>
+                        <p>הפקת סרטונים אומנותיים</p>
+                    </div>
+                    <div class="domain-card fade-in-up">
+                        <div class="domain-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>MultiCommunity</h4>
+                        <p>ניהול קהילות דיגיטליות</p>
+                    </div>
+                    <div class="domain-card fade-in-up">
+                        <div class="domain-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>MultiEstate</h4>
+                        <p>נדל״ן וקרקעות</p>
+                    </div>
+                    <div class="domain-card fade-in-up">
+                        <div class="domain-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>MultiMarketing</h4>
+                        <p>שיווק דיגיטלי ואתרים</p>
+                    </div>
                 </div>
+
+                <div class="cta-buttons">
+                    <a href="#domains" class="btn btn-primary fade-in-up">
+                        <i class="fas fa-arrow-down"></i>
+                        גלו את התחומים שלנו
+                    </a>
+                    <a href="https://wa.me/972500000000" class="btn btn-secondary fade-in-up" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        יצירת קשר מיידית
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- About Erdit Section -->
     <section id="about" class="about-erdit">
         <div class="container">
-            <h3 class="general-section-title fade-in-up">המותג שמחבר הכל</h3>
-            <p class="general-section-description fade-in-up">
-                מולטיבראון לא רק חברה - זה אקוסיסטם שלם שמביא פתרונות מושלמים בכל תחום. 
-                כמו קובייה של רוביק, כל צד מייצג תחום אחר, אבל הכל עובד יחד בהרמוניה מושלמת.
-            </p>
+            <!-- Brand Section -->
+            <div class="about-brand">
+                <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn Brand" class="about-brand-logo">
+                <h3>המותג שמחבר הכל</h3>
+                <p>
+                    מולטיבראון לא רק חברה - זה אקוסיסטם שלם שמביא פתרונות מושלמים בכל תחום. 
+                    כמו קובייה של רוביק, כל צד מייצג תחום אחר, אבל הכל עובד יחד בהרמוניה מושלמת.
+                </p>
+            </div>
+
             <div class="about-content">
                 <div class="about-image">
                     <div class="image-frame">
@@ -1431,6 +1674,7 @@
         </div>
     </section>
 
+    <!-- Business Domains Section -->
     <section id="domains" class="business-domains">
         <div class="container">
             <div class="section-title">
@@ -1439,6 +1683,7 @@
             </div>
 
             <div class="domains-grid">
+                <!-- MultiStay -->
                 <div class="business-card">
                     <div class="business-header">
                         <div class="business-icon">
@@ -1465,6 +1710,7 @@
                     </button>
                 </div>
 
+                <!-- MultiEvents -->
                 <div class="business-card">
                     <div class="business-header">
                         <div class="business-icon">
@@ -1491,6 +1737,7 @@
                     </button>
                 </div>
 
+                <!-- MultiMedia -->
                 <div class="business-card">
                     <div class="business-header">
                         <div class="business-icon">
@@ -1517,6 +1764,7 @@
                     </button>
                 </div>
 
+                <!-- MultiCommunity -->
                 <div class="business-card">
                     <div class="business-header">
                         <div class="business-icon">
@@ -1543,6 +1791,7 @@
                     </button>
                 </div>
 
+                <!-- MultiEstate -->
                 <div class="business-card">
                     <div class="business-header">
                         <div class="business-icon">
@@ -1569,6 +1818,7 @@
                     </button>
                 </div>
 
+                <!-- MultiMarketing -->
                 <div class="business-card">
                     <div class="business-header">
                         <div class="business-icon">
@@ -1598,6 +1848,7 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -1621,6 +1872,7 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-title">
@@ -1672,6 +1924,7 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
@@ -1761,12 +2014,15 @@
         </div>
     </section>
 
+    <!-- WhatsApp Float Button -->
     <a href="https://wa.me/972500000000" class="whatsapp-float" target="_blank" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <!-- Footer Logo -->
             <div class="footer-logo">
                 <img src="https://i.imgur.com/04x9Rfw.jpg" alt="Multi Brawn" class="footer-logo-image">
             </div>
