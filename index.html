@@ -98,8 +98,8 @@
         }
 
         .logo-image {
-            width: 70px; /* הגדלה להבלטה */
-            height: 70px; /* הגדלה להבלטה */
+            width: 77px; /* 10% יותר מ-70px (70 * 1.1 = 77) */
+            height: 77px; /* 10% יותר מ-70px */
             border-radius: 15px;
             transition: all 0.6s ease;
             filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); /* חיזוק ההבלטה */
@@ -121,7 +121,7 @@
             content: 'by Erdit Brown';
             position: absolute;
             bottom: -10px;
-            left: 80px; /* התאמה למיקום לאחר הגדלת הלוגו */
+            left: 87px; /* התאמה למיקום לאחר הגדלת הלוגו (80 + 7, בערך) */
             font-size: 0.35em;
             color: var(--text-muted);
             font-family: 'Inter', sans-serif;
@@ -247,11 +247,7 @@
             max-width: 1100px;
             margin: 0 auto;
             /* הסרת כל התוכן מה-Hero Section כדי להבליט את הוידאו */
-            /* ה-div נשאר כדי לשמור על מבנה הגריד/פלקסבוקס של הסקשן אם יוחלט להוסיף תוכן בעתיד */
         }
-
-        /* Business Domains Preview - Million Dollar Style (from original Hero) */
-        /* העברתי את הסטיילים והתוכן של domains-preview לסקשן החדש business-domains */
 
         .cta-buttons {
             display: flex;
@@ -1238,8 +1234,6 @@
                 padding: 0; /* וודא שאין ריפוד ב-Hero במובייל */
             }
 
-            /* .domains-preview moved to business-domains section */
-            
             .domain-card {
                 padding: 2rem 1.5rem;
             }
@@ -1506,7 +1500,7 @@
                         <li>חתונות קטנות ואירועים פרטיים</li>
                         <li>בר/בת מצווה חגיגיים</li>
                         <li>התאמה לציבור דתי וחרדי</li>
-                        <li>מטבח כשר למהדרין</li>
+                        <li><li>מטבח כשר למהדרין</li>
                         <li>ליווי מלא מהתכנון ועד הביצוע</li>
                     </ul>
                     <button class="business-btn" onclick="openDomain('multievents')">
