@@ -1,1974 +1,673 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebMaster Pro - פלטפורמה לבניית אתרים עסקיים מקצועיים</title>
-    <meta name="description" content="פלטפורמה מקצועית לבניית אתרים עסקיים עם גלריית דמואים חיים ואדיטור ויזואלי. מאגר תבניות מוכנות בתחומים עסקיים מגוונים.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MULTIBRAWN - נופש, אירועים ולוקיישנים</title>
+  <meta name="description" content="MULTIBRAWN - מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary-bg: #0f0c29;
+      --secondary-bg: #1a1a2e;
+      --brand-purple: #8B5FBF;
+      --light-purple: #a855f7;
+      --cta-turquoise: #40E0D0;
+      --text-light: #ffffff;
+      --text-muted: #b3b3b3;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Heebo', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Rubik:wght@300;400;500;600;700;800;900&family=Varela+Round&family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --primary-light: #3b82f6;
-            --secondary-color: #f8f9fa;
-            --accent-gold: #d4af37;
-            --accent-gold-light: #e6c651;
-            --accent-silver: #c0c0c0;
-            --text-primary: #1a1a1a;
-            --text-secondary: #4a4a4a;
-            --text-muted: #6b7280;
-            --text-light: #9ca3af;
-            --bg-white: #ffffff;
-            --bg-light: #f8f9fa;
-            --bg-dark: #1a1a1a;
-            --border-light: #e5e7eb;
-            --border-gold: rgba(212, 175, 55, 0.3);
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
-            --shadow-luxury: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            --gradient-luxury: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #e6c651 100%);
-            --gradient-blue: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Rubik', 'Alef', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-white);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Luxury animations */
-        @keyframes luxuryFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes luxuryFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* ===== HOLOGRAPHIC LOGO ANIMATIONS ===== */
-        @keyframes holoRotate {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg); }
-        }
-
-        @keyframes holoShine {
-            0% { opacity: 0.6; box-shadow: 0 0 20px currentColor; }
-            100% { opacity: 1; box-shadow: 0 0 40px currentColor, 0 0 60px currentColor; }
-        }
-
-        /* Status Messages */
-        .status-message {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 10px;
-            color: white;
-            font-weight: 600;
-            z-index: 10000;
-            backdrop-filter: blur(10px);
-            transform: translateX(400px);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .status-message.show {
-            transform: translateX(0);
-        }
-
-        .status-message.success {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-        }
-
-        .status-message.error {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-        }
-
-        .status-message.warning {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-        }
-
-        .status-message.info {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        }
-
-        /* Loading Overlay */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 20000;
-            backdrop-filter: blur(5px);
-        }
-
-        .loading-overlay.show {
-            display: flex;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #2563eb;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .loading-text {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        /* Connection Status */
-        .connection-status {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 12px 20px;
-            border-radius: 50px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 9999;
-            border: 1px solid var(--border-light);
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #dc2626;
-            animation: pulse 2s infinite;
-        }
-
-        .status-dot.connected {
-            background: #059669;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-md);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-        }
-
-        /* ===== UPDATED LOGO - כחול בולט ויפה ===== */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-decoration: none;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .logo-holographic {
-            width: 60px;
-            height: 60px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: holoRotate 4s linear infinite;
-        }
-
-        .holo-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid;
-            border-radius: 15px;
-            animation: holoShine 2s ease-in-out infinite alternate;
-        }
-
-        .holo-layer:nth-child(1) {
-            border-color: #2563eb;
-            transform: rotateX(0deg) rotateY(0deg) translateZ(10px);
-        }
-
-        .holo-layer:nth-child(2) {
-            border-color: #3b82f6;
-            transform: rotateX(45deg) rotateY(45deg) translateZ(5px);
-            animation-delay: 0.3s;
-        }
-
-        .holo-layer:nth-child(3) {
-            border-color: #1d4ed8;
-            transform: rotateX(90deg) rotateY(90deg) translateZ(0px);
-            animation-delay: 0.6s;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text .main-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #1d4ed8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-            letter-spacing: -0.02em;
-        }
-
-        .logo-text .sub-title {
-            font-size: 1rem;
-            color: #2563eb;
-            font-weight: 700;
-            margin-top: 0.2rem;
-            font-family: 'Inter', sans-serif;
-            text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn {
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Rubik', 'Alef', sans-serif;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            box-shadow: var(--shadow-lg);
-            border: 2px solid transparent;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-gold {
-            background: var(--gradient-gold);
-            color: var(--primary-color);
-            box-shadow: var(--shadow-lg);
-            font-weight: 700;
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 140px 0 100px 0;
-            background: var(--gradient-luxury);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at top right, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom left, rgba(26, 26, 26, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary-color);
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 2.5rem;
-            border: 1px solid rgba(37, 99, 235, 0.3);
-            backdrop-filter: blur(10px);
-            animation: luxuryFadeIn 1s ease 0.2s both;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-            line-height: 1.1;
-            font-family: 'Inter', 'Alef', serif;
-            letter-spacing: -0.02em;
-            animation: luxuryFadeIn 1s ease 0.4s both;
-        }
-
-        .hero-subtitle {
-            font-size: 1.6rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            line-height: 1.6;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 500;
-            animation: luxuryFadeIn 1s ease 0.6s both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-            animation: luxuryFadeIn 1s ease 0.8s both;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 5rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: luxuryFadeIn 1s ease 1s both;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border-light);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-gold);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .stat-number {
-            display: block;
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', 'Alef', serif;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 120px 0;
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-            line-height: 1.2;
-            font-family: 'Inter', 'Alef', serif;
-            letter-spacing: -0.02em;
-        }
-
-        .about-text p {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-text {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 1.1rem;
-        }
-
-        .about-visual {
-            background: var(--gradient-luxury);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .visual-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .visual-item {
-            aspect-ratio: 1;
-            background: white;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-        }
-
-        .visual-item:hover {
-            transform: scale(1.05);
-            animation: luxuryFloat 2s ease-in-out infinite;
-        }
-
-        .visual-caption {
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 120px 0;
-            background: var(--bg-light);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            font-family: 'Inter', 'Alef', serif;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .portfolio-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border-light);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .portfolio-card.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .card-image {
-            height: 280px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
-            transition: all 0.4s ease;
-        }
-
-        .portfolio-card:hover .card-image::before {
-            background: linear-gradient(45deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%);
-        }
-
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            color: white;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-        }
-
-        .card-category {
-            color: var(--accent-gold-light);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .card-title-overlay {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .card-content {
-            padding: 2.5rem;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', 'Alef', serif;
-        }
-
-        .card-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .card-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-
-        .feature-tag {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary-color);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-
-        .card-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            font-family: 'Inter', 'Alef', serif;
-        }
-
-        .card-btn {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            text-decoration: none;
-        }
-
-        .card-btn:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Process Section */
-        .process {
-            padding: 120px 0;
-            background: white;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .process-step {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--gradient-luxury);
-            border-radius: 24px;
-            border: 1px solid var(--border-light);
-            position: relative;
-            transition: all 0.4s ease;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .process-step:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 800;
-            margin: 0 auto 2rem auto;
-            box-shadow: var(--shadow-lg);
-            font-family: 'Inter', 'Alef', serif;
-        }
-
-        .step-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            font-family: 'Inter', 'Alef', serif;
-        }
-
-        .step-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 120px 0;
-            background: var(--gradient-dark);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at top, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom, rgba(192, 192, 192, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            font-family: 'Inter', 'Alef', serif;
-            letter-spacing: -0.02em;
-        }
-
-        .cta p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .btn-white {
-            background: white;
-            color: var(--primary-color);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .btn-white:hover {
-            background: var(--bg-light);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 3rem 0;
-            background: var(--primary-color);
-            color: white;
-            text-align: center;
-        }
-
-        .footer p {
-            opacity: 0.8;
-            font-size: 1rem;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 120px 0 80px 0;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .process-steps {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .about-text h2 {
-                font-size: 2.2rem;
-            }
-
-            .cta h2 {
-                font-size: 2.2rem;
-            }
-
-            .logo-holographic {
-                width: 50px;
-                height: 50px;
-            }
-
-            .logo-text .main-title {
-                font-size: 1.5rem;
-            }
-
-            .logo-text .sub-title {
-                font-size: 0.85rem;
-            }
-
-            .connection-status {
-                position: relative;
-                bottom: 0;
-                left: 0;
-                margin: 20px auto;
-                width: fit-content;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    body {
+      font-family: var(--font-body);
+      background: var(--primary-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .header-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 12, 41, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(139, 95, 191, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .logo-container:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-purple);
+      box-shadow: 0 0 20px rgba(139, 95, 191, 0.3);
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-light);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--text-light);
+      background: rgba(139, 95, 191, 0.1);
+    }
+
+    .cta-button {
+      background: var(--cta-turquoise);
+      color: #000;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(64, 224, 208, 0.6);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .hamburger-line {
+      width: 30px;
+      height: 3px;
+      background: var(--text-light);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 900;
+      color: var(--brand-purple);
+      text-shadow: 
+        0 0 40px rgba(139, 95, 191, 0.8),
+        0 0 80px rgba(139, 95, 191, 0.4);
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero-description {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+    }
+
+    /* Sections */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section:nth-child(even) {
+      background: var(--secondary-bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: rgba(26, 26, 46, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(139, 95, 191, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--brand-purple);
+      box-shadow: 0 20px 50px rgba(139, 95, 191, 0.4);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(139, 95, 191, 0.2);
+      background: var(--primary-bg);
+    }
+
+    .footer-logo-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--cta-turquoise);
+    }
+
+    .footer-links .separator {
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--cta-turquoise);
+      transform: translateY(-3px);
+    }
+
+    .footer-copyright {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-credit {
+      color: var(--brand-purple);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .floating-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25d366, #20ba5a);
+    }
+
+    .accessibility-btn {
+      background: var(--brand-purple);
+    }
+
+    /* Accessibility Panel */
+    .accessibility-panel {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 280px;
+      background: var(--secondary-bg);
+      border: 1px solid rgba(139, 95, 191, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .accessibility-panel.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .accessibility-panel h3 {
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .close-panel {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-panel:hover {
+      color: var(--text-light);
+    }
+
+    .accessibility-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .accessibility-btn-control {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(139, 95, 191, 0.3);
+      background: rgba(139, 95, 191, 0.1);
+      color: var(--text-light);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .accessibility-btn-control:hover {
+      background: var(--brand-purple);
+      border-color: var(--brand-purple);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 80px;
+        flex-direction: column;
+        background: rgba(15, 12, 41, 0.98);
+        width: 100%;
+        padding: 20px;
+        transition: 0.3s;
+        border-top: 1px solid rgba(139, 95, 191, 0.2);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-buttons {
+        right: 15px;
+        bottom: 15px;
+      }
+
+      .accessibility-panel {
+        right: 15px;
+        width: calc(100vw - 30px);
+        max-width: 280px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div>
-            <div class="loading-spinner"></div>
-            <div class="loading-text" id="loadingText">טוען נתונים...</div>
-        </div>
+  <!-- Header -->
+  <header class="header-nav">
+    <nav class="nav-content">
+      <a href="index.html" class="logo-container">
+        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN Logo" class="logo-img">
+        <span class="logo-text">MULTIBRAWN</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">דף הבית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+        <li><a href="contact.html" class="cta-button">צור קשר</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="mobileToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">MULTIBRAWN</h1>
+      <h2 class="hero-subtitle">נופש, אירועים ולוקיישנים</h2>
+      <p class="hero-description">
+        מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°
+      </p>
     </div>
+  </section>
 
-    <!-- Connection Status -->
-    <div class="connection-status" id="connectionStatus">
-        <div class="status-dot" id="statusDot"></div>
-        <span id="statusText">מתחבר למסד נתונים...</span>
+  <!-- Properties Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון בוטיק" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">מלונות בוטיק</h3>
+            <p class="card-description">אינטימיות, שירות מכל הלב ועיצוב מוקפד</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg" alt="וילה יוקרה" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">וילות יוקרה</h3>
+            <p class="card-description">מתאים לאירועים ולמשפחות – עם פרטיות מלאה</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">צימרים רומנטיים</h3>
+            <p class="card-description">בריחה לטבע עם אווירה קסומה</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <a href="#" class="logo">
-                <div class="logo-holographic">
-                    <div class="holo-layer"></div>
-                    <div class="holo-layer"></div>
-                    <div class="holo-layer"></div>
-                </div>
-                <div class="logo-text">
-                    <div class="main-title">WebMaster Pro</div>
-                    <div class="sub-title">אתרים שבונים עסקים</div>
-                </div>
-            </a>
-            
-            <ul class="nav-links">
-                <li><a href="#about">אודות</a></li>
-                <li><a href="#portfolio">גלריה</a></li>
-                <li><a href="#landing-pages">דפי נחיתה</a></li>
-                <li><a href="#automation">אוטומציות</a></li>
-                <li><a href="#clients">לקוחות</a></li>
-                <li><a href="#articles">מאמרים</a></li>
-                <li><a href="#contact">צור קשר</a></li>
-                <li><a href="#editor" class="btn btn-primary">התחל עכשיו</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-star"></i>
-                    פלטפורמה מקצועית לעסקים
-                </div>
-                
-                <h1 class="hero-title">
-                    פלטפורמה מתקדמת<br>
-                    <span style="background: var(--gradient-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">לעיצוב ובניית</span><br>
-                    אתרים עסקיים
-                </h1>
-                
-                <p class="hero-subtitle">
-                    <span id="templateCount">12</span> תבניות אתרים מקצועיות בתחומים עסקיים מגוונים עם אדיטור ויזואלי להתאמה אישית מלאה ובינה מלאכותית מתקדמת.
-                </p>
-                
-                <div class="hero-cta">
-                    <a href="#portfolio" class="btn btn-gold">
-                        <i class="fas fa-play"></i>
-                        צפה בגלריה
-                    </a>
-                    <a href="#technology" class="btn btn-secondary">
-                        <i class="fas fa-info-circle"></i>
-                        איך זה עובד?
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number" id="statTemplates">12</span>
-                    <span class="stat-label">תבניות מוכנות</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">10</span>
-                    <span class="stat-label">תחומים עסקיים</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">רספונסיבי</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">זמינות</span>
-                </div>
-            </div>
+  <!-- Events Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">פתרונות ייחודיים לכל סוג אירוע</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-content">
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">✡️</div>
+            <h3 class="card-title">שבתות חתן ואירועים דתיים</h3>
+            <p class="card-description">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות</p>
+          </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about fade-in">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>מובילי הטכנולוגיה הדיגיטלית</h2>
-                    <p>
-                        WebMaster Pro מפתחת פתרונות מתקדמים לבניית אתרים עסקיים. 
-                        הפלטפורמה שלנו משלבת בינה מלאכותית מתקדמת עם עיצוב חדשני 
-                        ליצירת אתרים מקצועיים ומותאמים אישית.
-                    </p>
-                    <p style="padding: 1.5rem; background: rgba(37, 99, 235, 0.1); border-radius: 12px; border-left: 4px solid var(--primary-color); margin: 1.5rem 0;">
-                        <strong>שותפות טכנולוגית:</strong> אנחנו עובדים עם מובילי התחום הטכנולוגי 
-                        כדי לספק פתרונות מותאמים אישית מקצה לקצה.
-                    </p>
-                    
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <span class="feature-text">טכנולוגיה חדשנית</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <span class="feature-text">מוכח בשטח</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <span class="feature-text">גמישות ללא תחרות</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <span class="feature-text">תמיכה אסטרטגית</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-visual">
-                    <div class="visual-grid">
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/sWlf1880WKM.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/WiRp8302YJs.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/hVyV3858OQ.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/eJk7179MXo.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/rhNp2418oyE.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/xnK4816Hc.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/htWG9491QkE.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/Ceu2132Q.png'); background-size: cover; background-position: center;"></div>
-                        <div class="visual-item" style="background-image: url('https://i.imghippo.com/files/yiP9207qMI.png'); background-size: cover; background-position: center;"></div>
-                    </div>
-                    <p class="visual-caption">10 תחומים עסקיים מגוונים והמבוקשים ביותר בישראל</p>
-                </div>
-            </div>
+        <div class="card">
+          <div class="card-content">
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">👥</div>
+            <h3 class="card-title">כנסים וימי גיבוש</h3>
+            <p class="card-description">פתרונות לקבוצות עסקיות עם חדרי ישיבות</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section id="technology" class="technology fade-in" style="padding: 120px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">הטכנולוגיה שלנו</h2>
-                <p class="section-subtitle">
-                    פתרונות מתקדמים ומוכחים לבניית אתרים עסקיים מקצועיים
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 4rem;">
-                
-                <!-- Advanced Technology Card -->
-                <div style="background: white; border-radius: 20px; padding: 3rem 2rem; box-shadow: var(--shadow-xl); border: 1px solid var(--border-light); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-blue);"></div>
-                    <div style="width: 60px; height: 60px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
-                        <i class="fas fa-brain" style="color: white; font-size: 1.5rem;"></i>
-                    </div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; font-family: 'Inter', 'Alef', serif;">טכנולוגיית AI מתקדמת</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                        WebMaster Pro משלבת בינה מלאכותית מתקדמת ליצירת אתרים אוטומטית, 
-                        אופטימיזציה חכמה ואנליטיקה מובנית .
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">יצירה אוטומטית</span>
-                        <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">SEO חכם</span>
-                        <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">אנליטיקה מתקדמת</span>
-                    </div>
-                </div>
-
-                <!-- Field-Proven Solutions Card -->
-                <div style="background: white; border-radius: 20px; padding: 3rem 2rem; box-shadow: var(--shadow-xl); border: 1px solid var(--border-light); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-gold);"></div>
-                    <div style="width: 60px; height: 60px; background: var(--gradient-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
-                        <i class="fas fa-award" style="color: var(--text-primary); font-size: 1.5rem;"></i>
-                    </div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; font-family: 'Inter', 'Alef', serif;">פתרונות מוכחים בשטח</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                        12 תבניות אתרים שנבדקו ואומתו בפועל אצל לקוחות, 
-                        עם שיעור הצלחה של 97% ושביעות רצון מקסימלית.
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">97% הצלחה</span>
-                        <span style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">נבדק בפועל</span>
-                        <span style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">מוכח איכות</span>
-                    </div>
-                </div>
-
-                <!-- Flexible Technology Card -->
-                <div style="background: white; border-radius: 20px; padding: 3rem 2rem; box-shadow: var(--shadow-xl); border: 1px solid var(--border-light); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(135deg, #059669 0%, #047857 100%);"></div>
-                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #059669 0%, #047857 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
-                        <i class="fas fa-rocket" style="color: white; font-size: 1.5rem;"></i>
-                    </div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; font-family: 'Inter', 'Alef', serif;">גמישות ותגובה מהירה</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                        הפלטפורמה שלנו מספקת גמישות ללא תחרות ותגובה מהירה לצרכים הספציפיים של הלקוחות, 
-                        כולל פתרונות מותאמים אישית מקצה לקצה.
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span style="background: rgba(5, 150, 105, 0.1); color: #059669; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">פתרונות מותאמים</span>
-                        <span style="background: rgba(5, 150, 105, 0.1); color: #059669; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">תגובה מהירה</span>
-                        <span style="background: rgba(5, 150, 105, 0.1); color: #059669; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">פתרון שלם</span>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <div class="card-content">
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">💍</div>
+            <h3 class="card-title">חתונות ואירועים</h3>
+            <p class="card-description">אירועי החיים החשובים עם כל הפרטים המושלמים</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing CTA -->
+  <section class="section" style="text-align: center;">
+    <div class="container">
+      <h2 class="section-title">שירותי שיווק דיגיטלי מתקדמים</h2>
+      <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem;">
+        לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית
+      </p>
+      <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="footer-logo-section">
+        <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem;">
+          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+          <span class="logo-text">MULTIBRAWN</span>
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/kfischi/MULTIBRAWN-V.1/blob/main/privacy.html" target="_blank">מדיניות פרטיות</a>
+        <span class="separator">·</span>
+        <a href="https://github.com/kfischi/MULTIBRAWN-V.1/blob/main/accessibillity.html" target="_blank">הצהרת נגישות</a>
+      </div>
+      <div class="social-links">
+        <a href="#" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+      <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">
+      <i class="fas fa-universal-access"></i>
+    </button>
+    <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" title="WhatsApp" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Accessibility Panel -->
+  <div class="accessibility-panel" id="accessibilityPanel">
+    <button class="close-panel" id="closePanel">&times;</button>
+    <h3>הגדרות נגישות</h3>
+    <div class="accessibility-controls">
+      <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
+      <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
+      <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
+      <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
+    </div>
+  </div>
+
+  <script>
+    // Mobile Menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
     
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">הגלריה שלנו</h2>
-                <p class="section-subtitle">
-                    WebMaster Pro מעצבת ובונה אתרים עסקיים ביצועים גבוהים 
-                    לענות על צרכי השוק העסקי המגוון
-                </p>
-            </div>
-            
-            <!-- תיווספנה כאן התבניות דינמית -->
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Templates will be loaded here -->
-            </div>
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
 
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="#editor" class="btn btn-gold">
-                    <i class="fas fa-edit"></i>
-                    התחל עריכה עכשיו
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Strategic Partnerships Section -->
-    <section class="partnerships fade-in" style="padding: 80px 0; background: var(--gradient-dark); color: white;">
-        <div class="container">
-            <div style="text-align: center;">
-                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; opacity: 0.9;">הטכנולוגיות שלנו</h3>
-                <p style="font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto;">
-                    פלטפורמה מתקדמת עם טכנולוגיות מובילות 
-                    לבניית אתרים מקצועיים ומהירים
-                </p>
-            </div>
-            
-            <div style="display: flex; justify-content: center; align-items: center; gap: 4rem; margin-top: 3rem; flex-wrap: wrap;">
-                <div style="display: flex; align-items: center; gap: 1rem; opacity: 0.8;">
-                    <i class="fas fa-cloud" style="font-size: 2rem; color: var(--accent-gold);"></i>
-                    <span style="font-size: 1.1rem; font-weight: 600;">Netlify Platform</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1rem; opacity: 0.8;">
-                    <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--accent-gold);"></i>
-                    <span style="font-size: 1.1rem; font-weight: 600;">Cloudflare CDN</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1rem; opacity: 0.8;">
-                    <i class="fas fa-code" style="font-size: 2rem; color: var(--accent-gold);"></i>
-                    <span style="font-size: 1.1rem; font-weight: 600;">HTML5 & CSS3</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1rem; opacity: 0.8;">
-                    <i class="fas fa-mobile-alt" style="font-size: 2rem; color: var(--accent-gold);"></i>
-                    <span style="font-size: 1.1rem; font-weight: 600;">Responsive Design</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="process fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">איך זה עובד?</h2>
-                <p class="section-subtitle">
-                    תהליך פשוט ומהיר ליצירת אתר מקצועי
-                </p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">בחירת תבנית</h3>
-                    <p class="step-description">
-                        בחר את התבנית המתאימה לתחום העסקי שלך מתוך 12 האפשרויות המקצועיות שלנו
-                    </p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">התאמה אישית</h3>
-                    <p class="step-description">
-                        השתמש באדיטור הויזואלי שלנו כדי להתאים את התוכן, הצבעים, התמונות והטקסט
-                    </p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">פרסום מיידי</h3>
-                    <p class="step-description">
-                        האתר מוכן לפרסום מיידי עם כל התכונות המתקדמות - רספונסיבי, מהיר ומאובטח
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>מוכן להתחיל?</h2>
-                <p>
-                    הצטרף לעסקים שכבר בחרו ב-WebMaster Pro<br>
-                    ויצרו נוכחות דיגיטלית מקצועית ומרשימה
-                </p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="#portfolio" class="btn btn-white">
-                        <i class="fas fa-eye"></i>
-                        צפה בגלריה
-                    </a>
-                    <a href="#editor" class="btn btn-gold">
-                        <i class="fas fa-rocket"></i>
-                        התחל עכשיו
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 WebMaster Pro. כל הזכויות שמורות.</p>
-        </div>
-    </footer>
-
-    <!-- ===== SUPABASE + JAVASCRIPT מתוקן ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+    // Accessibility Panel
+    const accessibilityBtn = document.getElementById('accessibilityBtn');
+    const accessibilityPanel = document.getElementById('accessibilityPanel');
+    const closePanel = document.getElementById('closePanel');
     
-    <script>
-        // ===== גלובלים =====
-        console.log('🚀 WebMaster Pro מתחיל לטעון...');
-        
-        // הגדרות Supabase - הפרטים שלך!
-        const SUPABASE_CONFIG = {
-            url: 'https://pooeneoileludqtdecig.supabase.co',
-            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvb2VuZW9pbGVsdWRxdGRlY2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4NjU0MDAsImV4cCI6MjA2ODQ0MTQwMH0.Rs579QAksLWTBuDiMo6laa8j4qThKHzlkggrHZagliI'
-        };
+    accessibilityBtn.addEventListener('click', () => {
+      accessibilityPanel.classList.toggle('open');
+    });
+    
+    closePanel.addEventListener('click', () => {
+      accessibilityPanel.classList.remove('open');
+    });
 
-        let supabaseClient = null;
-        let isConnected = false;
+    // Close panel when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
+        accessibilityPanel.classList.remove('open');
+      }
+    });
 
-        // נתוני גיבוי למקרה של בעיות חיבור
-        const BACKUP_TEMPLATES = [
-            {
-                id: 1,
-                name: 'ד"ר מיכל רוזן',
-                slug: 'dr-michal-rosen',
-                description: 'אתר מקצועי לרפואה אסתטית עם מחשבונים מתקדמים',
-                preview_image_url: 'https://i.imghippo.com/files/sWlf1880WKM.png',
-                category: 'רפואה אסתטית',
-                price: 280000,
-                is_premium: true,
-                features: ['הזמנות אונליין', 'גלריית טיפולים', 'לפני ואחרי', 'ייעוץ מקוון']
-            },
-            {
-                id: 2,
-                name: 'דני פיט - מאמן כושר',
-                slug: 'fitness-co',
-                description: 'אתר מאמן כושר עם מחשבוני BMI ותוכניות אימון',
-                preview_image_url: 'https://i.imghippo.com/files/WiRp8302YJs.png',
-                category: 'כושר וספורט',
-                price: 220000,
-                is_premium: false,
-                features: ['מחשבון BMI', 'תוכניות אימון', 'הצלחות לקוחות', 'הזמנת אימונים']
-            },
-            {
-                id: 3,
-                name: 'סטודיו אוהם - יוגה',
-                slug: 'yoga-studio',
-                description: 'אתר יוגא עם לוח זמנים אינטראקטיבי והזמנות',
-                preview_image_url: 'https://i.imghippo.com/files/eJk7179MXo.png',
-                category: 'יוגה ומדיטציה',
-                price: 190000,
-                is_premium: false,
-                features: ['לוח שיעורים', 'הרשמה אונליין', 'וידאוי הדרכה', 'מדיטציה מודרכת']
-            },
-            {
-                id: 4,
-                name: 'ד"ר שרה כהן - תזונאית',
-                slug: 'nutritionist',
-                description: 'אתר תזונאית עם מחשבון קלוריות ותפריטים אישיים',
-                preview_image_url: 'https://i.imghippo.com/files/rhNp2418oyE.png',
-                category: 'תזונה ובריאות',
-                price: 240000,
-                is_premium: false,
-                features: ['מחשבון קלוריות', 'תפריטים אישיים', 'יעוץ תזונתי', 'מעקב התקדמות']
-            },
-            {
-                id: 5,
-                name: 'משרד ברקוביץ - עו"ד',
-                slug: 'law-firm',
-                description: 'אתר משרד עורכי דין עם תחומי מומחיות וייעוץ מקוון',
-                preview_image_url: 'https://i.imghippo.com/files/hVyV3858OQ.png',
-                category: 'משפטים',
-                price: 250000,
-                is_premium: false,
-                features: ['תחומי מומחיות', 'צוות עורכי דין', 'ייעוץ מקוון', 'קביעת פגישות']
-            },
-            {
-                id: 6,
-                name: 'רינה לוי - חשבת שכר',
-                slug: 'accountant',
-                description: 'אתר חשבת שכר עם מחשבון שכר ודיווחים ממשלתיים',
-                preview_image_url: 'https://i.imghippo.com/files/tGN5433dAU.png',
-                category: 'חשבונאות',
-                price: 200000,
-                is_premium: false,
-                features: ['מחשבון שכר', 'דיווחים ממשלתיים', 'ייעוץ מקוון', 'ניהול ספרים']
-            },
-            {
-                id: 7,
-                name: 'מספרה BELLA',
-                slug: 'beauty-salon',
-                description: 'אתר סלון יופי עם הזמנת תורים וגלריית עבודות',
-                preview_image_url: 'https://i.imghippo.com/files/xnK4816Hc.png',
-                category: 'יופי ועיצוב',
-                price: 170000,
-                is_premium: false,
-                features: ['הזמנת תורים', 'גלריית עבודות', 'מחירון שירותים', 'ייעוץ אופנה']
-            },
-            {
-                id: 8,
-                name: 'ד"ר רונית לוי - מורה פרטית',
-                slug: 'tutor',
-                description: 'אתר מורה פרטית עם חומרי לימוד ומעקב התקדמות',
-                preview_image_url: 'https://i.imghippo.com/files/Ceu2132Q.png',
-                category: 'חינוך והוראה',
-                price: 210000,
-                is_premium: false,
-                features: ['שיעורים פרטיים', 'חומרי לימוד', 'מעקב התקדמות', 'יעוץ חינוכי']
-            },
-            {
-                id: 9,
-                name: 'נדל"ן פרמיום',
-                slug: 'real-estate',
-                description: 'אתר תיווך נדל"ן עם גלריית נכסים ומחשבון משכנתאות',
-                preview_image_url: 'https://i.imghippo.com/files/htWG9491QkE.png',
-                category: 'נדל"ן',
-                price: 270000,
-                is_premium: true,
-                features: ['גלריית נכסים', 'חיפוש מתקדם', 'מחשבון משכנתאות', 'השוואת נכסים']
-            },
-            {
-                id: 10,
-                name: 'מולטיבראון - נופש ואירועים',
-                slug: 'multibrawn',
-                description: 'אתר נופש ואירועים עם הזמנות ותכנון מותאם',
-                preview_image_url: 'https://i.imghippo.com/files/pL5530Z.png',
-                category: 'נופש ואירועים',
-                price: 230000,
-                is_premium: false,
-                features: ['תכנון נופשים', 'ארגון אירועים', 'הזמנות אונליין', 'ייעוץ אישי']
-            },
-            {
-                id: 11,
-                name: 'קליניקת יופי פרמיום',
-                slug: 'aesthetic-clinic',
-                description: 'אתר קליניקה לאסתטיקת פנים עם טיפולים מתקדמים',
-                preview_image_url: 'https://i.imghippo.com/files/Ayyb2287TOc.png',
-                category: 'אסתטיקה פנים',
-                price: 320000,
-                is_premium: true,
-                features: ['טיפולי פנים', 'הזמנות מתקדמות', 'ייעוץ מקצועי', 'גלריית תוצאות']
-            },
-            {
-                id: 12,
-                name: 'סטודיו נויה - עיצוב פנים',
-                slug: 'interior-design-studio',
-                description: 'סטודיו עיצוב פנים יוקרתי עם 21 פרויקטים מרהיבים',
-                preview_image_url: 'https://i.imghippo.com/files/yiP9207qMI.png',
-                category: 'עיצוב פנים',
-                price: 240000,
-                is_premium: false,
-                features: ['21 פרויקטים', 'עיצוב יוקרתי', 'המלצות לקוחות', 'ייעוץ WhatsApp']
-            }
-        ];
-
-        // ===== פונקציות עזר =====
-        function showLoading(text = 'טוען נתונים...') {
-            const overlay = document.getElementById('loadingOverlay');
-            const loadingText = document.getElementById('loadingText');
-            loadingText.textContent = text;
-            overlay.classList.add('show');
-        }
-
-        function hideLoading() {
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.classList.remove('show');
-        }
-
-        function updateConnectionStatus(connected, text) {
-            isConnected = connected;
-            const dot = document.getElementById('statusDot');
-            const statusText = document.getElementById('statusText');
-            
-            if (connected) {
-                dot.classList.add('connected');
-                statusText.textContent = text || 'מחובר למסד נתונים';
-            } else {
-                dot.classList.remove('connected');
-                statusText.textContent = text || 'לא מחובר למסד נתונים';
-            }
-        }
-
-        function showMessage(message, type = 'info', duration = 4000) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `status-message ${type}`;
-            messageDiv.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
-                ${message}
-            `;
-            
-            document.body.appendChild(messageDiv);
-            
-            setTimeout(() => messageDiv.classList.add('show'), 100);
-            
-            setTimeout(() => {
-                messageDiv.classList.remove('show');
-                setTimeout(() => {
-                    if (document.body.contains(messageDiv)) {
-                        document.body.removeChild(messageDiv);
-                    }
-                }, 300);
-            }, duration);
-        }
-
-        // ===== אתחול Supabase =====
-        async function initializeSupabase() {
-            showLoading('מתחבר למסד נתונים...');
-            updateConnectionStatus(false, 'מתחבר...');
-            
-            try {
-                // בדוק שהספרייה נטענה
-                if (typeof supabase === 'undefined') {
-                    throw new Error('ספריית Supabase לא נטענה');
-                }
-
-                // יצור לקוח Supabase בדרך הנכונה
-                const { createClient } = supabase;
-                supabaseClient = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key);
-                
-                console.log('✅ לקוח Supabase נוצר בהצלחה!');
-                
-                // נסה לטעון תבניות ממסד הנתונים
-                await loadTemplatesFromDatabase();
-                
-            } catch (error) {
-                console.error('❌ שגיאה בחיבור ל-Supabase:', error);
-                updateConnectionStatus(false, 'חיבור נכשל');
-                showMessage('בעיה בחיבור למסד הנתונים. טוען נתוני גיבוי...', 'warning', 5000);
-                
-                // טען נתוני גיבוי
-                await loadBackupTemplates();
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // ===== טעינת תבניות ממסד נתונים =====
-        async function loadTemplatesFromDatabase() {
-            try {
-                console.log('🔍 מחפש תבניות במסד נתונים...');
-                
-                const { data: templates, error } = await supabaseClient
-                    .from('templates')
-                    .select('id, name, slug, description, preview_image_url, category, price, is_premium')
-                    .order('id', { ascending: true });
-
-                if (error) {
-                    console.error('🚨 שגיאה בשאילתה:', error);
-                    throw error;
-                }
-
-                console.log(`📦 נמצאו ${templates?.length || 0} תבניות במסד נתונים`);
-
-                if (templates && templates.length > 0) {
-                    updateConnectionStatus(true, `${templates.length} תבניות נטענו`);
-                    displayTemplates(templates);
-                    updateStats(templates.length);
-                    showMessage(`✅ נטענו ${templates.length} תבניות מהמסד`, 'success', 3000);
-                } else {
-                    throw new Error('לא נמצאו תבניות במסד הנתונים');
-                }
-
-            } catch (error) {
-                console.error('❌ כשל בטעינת תבניות מהמסד:', error);
-                throw error; // העבר את השגיאה למעלה
-            }
-        }
-
-        // ===== טעינת נתוני גיבוי =====
-        async function loadBackupTemplates() {
-            console.log('📦 טוען נתוני גיבוי...');
-            updateConnectionStatus(false, 'משתמש בנתוני גיבוי');
-            
-            // הוסף עיכוב קטן כדי לדמות טעינה
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            displayTemplates(BACKUP_TEMPLATES);
-            updateStats(BACKUP_TEMPLATES.length);
-            showMessage('📦 טוען נתוני גיבוי - הכל עובד!', 'info', 4000);
-        }
-
-        // ===== הצגת תבניות =====
-        function displayTemplates(templates) {
-            const portfolioGrid = document.getElementById('portfolioGrid');
-            portfolioGrid.innerHTML = '';
-
-            templates.forEach((template, index) => {
-                const templateCard = createTemplateCard(template);
-                portfolioGrid.appendChild(templateCard);
-
-                // אנימציה מדורגת
-                setTimeout(() => {
-                    templateCard.classList.add('loaded');
-                }, index * 150);
-            });
-
-            console.log(`🎨 הוצגו ${templates.length} תבניות בגלריה`);
-        }
-
-        // ===== יצירת כרטיס תבנית =====
-        function createTemplateCard(template) {
-            const card = document.createElement('div');
-            card.className = 'portfolio-card';
-            card.setAttribute('data-website', template.slug);
-
-            // בחר URL נכון לדמו
-            const demoUrl = getDemoUrl(template.slug);
-            
-            // בחר תכונות (אם יש במסד נתונים או מנתוני הגיבוי)
-            const features = template.features || getDefaultFeatures(template.category);
-
-            // צור gradient אחורי יפה לפי קטגוריה
-            const gradientBg = getCategoryGradient(template.category);
-
-            card.innerHTML = `
-                <div class="card-image" style="background: ${gradientBg}; position: relative;">
-                    <img src="${template.preview_image_url}" 
-                         alt="${template.name}" 
-                         style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
-                         onerror="this.style.display='none';"
-                         onload="this.style.opacity='1';"
-                         loading="lazy">
-                    <div class="card-overlay">
-                        <div class="card-category">${template.category}</div>
-                        <h3 class="card-title-overlay">${template.name}</h3>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">${template.name}</h3>
-                    <p class="card-description">${template.description}</p>
-                    <div class="card-features">
-                        ${features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
-                    </div>
-                    <div class="card-price">
-                        <span class="price">₪${(template.price / 100).toLocaleString()}</span>
-                        <a href="${demoUrl}" target="_blank" class="card-btn" onclick="event.stopPropagation();">צפה בדמו</a>
-                    </div>
-                </div>
-            `;
-
-            // הוסף event listeners
-            addCardEventListeners(card, template);
-
-            return card;
-        }
-
-        // ===== יצירת gradient לפי קטגוריה =====
-        function getCategoryGradient(category) {
-            const gradients = {
-                'רפואה אסתטית': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                'כושר וספורט': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                'יוגה ומדיטציה': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                'תזונה ובריאות': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-                'משפטים': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-                'חשבונאות': 'linear-gradient(135deg, #30cfd0 0%, #91a7ff 100%)',
-                'יופי ועיצוב': 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-                'חינוך והוראה': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-                'נדל"ן': 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-                'נופש ואירועים': 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-                'אסתטיקה פנים': 'linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%)',
-                'עיצוב פנים': 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
-            };
-            
-            return gradients[category] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-        }
-
-        // ===== קבלת URL דמו =====
-        function getDemoUrl(slug) {
-            const websiteMap = {
-                'dr-michal-rosen': 'dr-michal-rosen.html',
-                'fitness-co': 'fitness-co.html', 
-                'yoga-studio': 'yoga-studio.html',
-                'nutritionist': 'nutritionist.html',
-                'law-firm': 'law-firm.html',
-                'accountant': 'accountant.html',
-                'beauty-salon': 'beauty-salon.html',
-                'tutor': 'tutor.html',
-                'real-estate': 'real-estate.html',
-                'multibrawn': 'multibrawn.html',
-                'aesthetic-clinic': 'aesthetic-clinic.html',
-                'interior-design-studio': 'interior-design-studio.html'
-            };
-
-            return websiteMap[slug] || `${slug}.html`;
-        }
-
-        // ===== תכונות ברירת מחדל =====
-        function getDefaultFeatures(category) {
-            const featureMap = {
-                'רפואה אסתטית': ['הזמנות אונליין', 'גלריית טיפולים', 'לפני ואחרי', 'ייעוץ מקוון'],
-                'כושר וספורט': ['מחשבון BMI', 'תוכניות אימון', 'הצלחות לקוחות', 'הזמנת אימונים'],
-                'יוגה ומדיטציה': ['לוח שיעורים', 'הרשמה אונליין', 'וידאוי הדרכה', 'מדיטציה מודרכת'],
-                'תזונה ובריאות': ['מחשבון קלוריות', 'תפריטים אישיים', 'יעוץ תזונתי', 'מעקב התקדמות'],
-                'משפטים': ['תחומי מומחיות', 'צוות עורכי דין', 'ייעוץ מקוון', 'קביעת פגישות'],
-                'חשבונאות': ['מחשבון שכר', 'דיווחים ממשלתיים', 'ייעוץ מקוון', 'ניהול ספרים'],
-                'יופי ועיצוב': ['הזמנת תורים', 'גלריית עבודות', 'מחירון שירותים', 'ייעוץ אופנה'],
-                'חינוך והוראה': ['שיעורים פרטיים', 'חומרי לימוד', 'מעקב התקדמות', 'יעוץ חינוכי'],
-                'נדל"ן': ['גלריית נכסים', 'חיפוש מתקדם', 'מחשבון משכנתאות', 'השוואת נכסים'],
-                'נופש ואירועים': ['תכנון נופשים', 'ארגון אירועים', 'הזמנות אונליין', 'ייעוץ אישי'],
-                'אסתטיקה פנים': ['טיפולי פנים', 'הזמנות מתקדמות', 'ייעוץ מקצועי', 'גלריית תוצאות'],
-                'עיצוב פנים': ['21 פרויקטים', 'עיצוב יוקרתי', 'המלצות לקוחות', 'ייעוץ WhatsApp']
-            };
-
-            return featureMap[category] || ['רספונסיבי', 'SEO מוכן', 'מהיר', 'מאובטח'];
-        }
-
-        // ===== הוספת event listeners לכרטיס =====
-        function addCardEventListeners(card, template) {
-            // לחיצה על הכרטיס (לא על הכפתור)
-            card.addEventListener('click', function(e) {
-                if (!e.target.classList.contains('card-btn') && !e.target.closest('.card-btn')) {
-                    const demoUrl = getDemoUrl(template.slug);
-                    showMessage(`🚀 פותח אתר: ${template.name}`, 'info', 2000);
-                    console.log(`📂 פותח: ${demoUrl}`);
-                    
-                    // פתח בטאב חדש
-                    const newWindow = window.open(demoUrl, '_blank');
-                    if (!newWindow) {
-                        showMessage('❌ החלון נחסם. אנא אפשר popup בדפדפן', 'error', 4000);
-                    }
-                }
-            });
-
-            // לחיצה על כפתור "צפה בדמו"
-            const demoBtn = card.querySelector('.card-btn');
-            if (demoBtn) {
-                demoBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    
-                    const demoUrl = getDemoUrl(template.slug);
-                    showMessage(`👁️ פותח דמו: ${template.name}`, 'success', 2000);
-                    console.log(`🎯 דמו: ${demoUrl}`);
-                    
-                    // פתח בטאב חדש
-                    const newWindow = window.open(demoUrl, '_blank');
-                    if (!newWindow) {
-                        showMessage('❌ החלון נחסם. אנא אפשר popup בדפדפן', 'error', 4000);
-                    }
-                });
-            }
-
-            // אפקטי hover מתקדמים
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-12px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        }
-
-        // ===== עדכון סטטיסטיקות =====
-        function updateStats(templateCount) {
-            const templateCountElements = [
-                document.getElementById('templateCount'),
-                document.getElementById('statTemplates')
-            ];
-
-            templateCountElements.forEach(element => {
-                if (element) {
-                    element.textContent = templateCount;
-                }
-            });
-        }
-
-        // ===== פונקציות ניווט =====
-        function initializeNavigation() {
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const href = this.getAttribute('href');
-                    
-                    if (href === '#' || href.length <= 1) {
-                        return;
-                    }
-                    
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Header scroll effect
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('.header');
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(255, 255, 255, 0.98)';
-                    header.style.backdropFilter = 'blur(20px)';
-                    header.style.boxShadow = 'var(--shadow-xl)';
-                } else {
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
-                    header.style.backdropFilter = 'blur(20px)';
-                    header.style.boxShadow = 'var(--shadow-md)';
-                }
-            });
-
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // ===== אתחול ראשי =====
-        async function initializeApp() {
-            console.log('🎯 מאתחל WebMaster Pro...');
-            
-            try {
-                // אתחל ניווט
-                initializeNavigation();
-                
-                // אתחל Supabase וטען תבניות
-                await initializeSupabase();
-                
-                console.log('🎉 WebMaster Pro נטען בהצלחה!');
-                
-            } catch (error) {
-                console.error('💥 שגיאה קריטית באתחול:', error);
-                showMessage('שגיאה קריטית. האתר עובד במצב גיבוי.', 'error', 6000);
-            }
-        }
-
-        // ===== הפעלה כשהדף מוכן =====
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeApp);
-        } else {
-            initializeApp();
-        }
-
-        // ===== הודעות קונסול =====
-        console.log('🚀 WebMaster Pro עם חיבור Supabase מתוקן נטען!');
-        console.log('✨ אתרים שבונים עסקים!');
-        console.log('🎯 12 דמואים חיים מחוברים לקישורים אמיתיים!');
-        console.log('🔗 חיבור Supabase מתוקן ויציב!');
-        console.log('📱 רספונסיבי מושלם לכל המכשירים!');
-        
-        // בדיקת קישורים - להצגה בקונסול
-        console.log('🔍 רשימת קישורי האתרים:');
-        const websiteList = [
-            'dr-michal-rosen.html',
-            'fitness-co.html', 
-            'yoga-studio.html',
-            'nutritionist.html',
-            'law-firm.html',
-            'accountant.html',
-            'beauty-salon.html',
-            'tutor.html',
-            'real-estate.html',
-            'multibrawn.html',
-            'aesthetic-clinic.html',
-            'interior-design-studio.html'
-        ];
-        
-        websiteList.forEach((link, index) => {
-            console.log(`${index + 1}. ${link}`);
-        });
-        
-        console.log('📍 ודא שהקבצים האלה קיימים באותה תיקייה כמו index.html');
-        console.log('🚨 אם קישור לא עובד, בדוק שקובץ ה-HTML קיים עם השם המדויק');
-    </script>
+    // Accessibility Controls
+    let currentFontSize = 100;
+    
+    document.getElementById('increaseFontBtn').addEventListener('click', () => {
+      currentFontSize = Math.min(150, currentFontSize + 10);
+      document.body.style.fontSize = `${currentFontSize}%`;
+    });
+    
+    document.getElementById('decreaseFontBtn').addEventListener('click', () => {
+      currentFontSize = Math.max(80, currentFontSize - 10);
+      document.body.style.fontSize = `${currentFontSize}%`;
+    });
+    
+    document.getElementById('highContrastBtn').addEventListener('click', () => {
+      document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
+    });
+    
+    document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
+      currentFontSize = 100;
+      document.body.style.fontSize = '100%';
+      document.body.style.filter = 'none';
+    });
+  </script>
 </body>
 </html>
